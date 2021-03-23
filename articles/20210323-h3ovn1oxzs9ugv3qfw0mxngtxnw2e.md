@@ -12,11 +12,13 @@ published: false
 
 ## サンプル
 
+```yaml
 TableName: news_release
 PartitionKey: id(S)
 GSI:
     PartitionKey: display_on(BOOL)
     SortKey: display_end_datetime(N)
+```
 
 - 管理画面からコーポレートサイトで表示するニュースリリースを登録する
 - 表示・非表示を切り替えたい
@@ -50,6 +52,7 @@ GSI:
     - filter expression では取得後のレコードから必要な分だけを選別するので、キー条件式でいかに取得対象を減らせるかが重要
     - display_start_datetime(N)を GSI キーにした方が見た目はわかりやすいが、現在時刻は当然のことながら大きくなり続けるので、display_end_datetime(N) を GSI キーにするべき
 - display_start_datetime(N) をキーに降順で sort する
+- ↓は PartiQL で取得する例
 
 ```partiql
 SELECT *
