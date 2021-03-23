@@ -3,7 +3,7 @@ title: "DynamoDB テーブルの設計サンプル"
 emoji: "🐙"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: [dynamodb]
-published: false
+published: true
 ---
 
 # What's
@@ -41,8 +41,8 @@ GSI:
 - display_on(BOOL) は false を default にする
     - 担当部署内でレビューが終わったら true にする
     - 公開後に誤りが見つかった場合など、急いで非表示にしたいとき、false に変更する
-- display_end_time(N) の n ヶ月後を ttl(N)として設定する
-    - ttl(N)は unixtime でしているする必要がある
+- display_end_datetime(N) の n ヶ月後を ttl(N)として設定する
+    - ttl(N)は unixtime で指定する必要がある
 
 ## API
 
