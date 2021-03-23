@@ -10,8 +10,6 @@ published: false
 
 管理画面から DynamoDB テーブルにコンテンツを登録して、API サーバがレコードを読み出して JSON レスポンスを作るようなケースでよく使う DynamoDB テーブルの設計について書く。
 
-テーブル設計についての記事はいくつか読んだが、実際に動いている
-
 ## サンプル
 
 TableName: news_release
