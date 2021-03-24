@@ -9,14 +9,14 @@ published: false
 # What's
 
 [DynamoDB-local + PartiQLが可能になった](https://aws.amazon.com/jp/about-aws/whats-new/2021/02/you-now-can-use-partiql-with-dynamodb-local-to-query-insert-update-and-delete-table-data-in-amazon-dynamodb/)ので試しているところ。
-コードは[Slim4-Skelton](https://github.com/odan/slim4-skeleton)を DynamoDB 用に書き換えたもの。
+コードは[Slim4-Skelton](https://github.com/odan/slim4-skeleton)をDynamoDB用に書き換えたもの。
 
 ↓リポジトリはこちら
 https://github.com/watarukura/php_vscode_project_template
 
 ## テーブル定義
 
-users テーブル。
+usersテーブル。
 
 ```yaml
 $ aws --endpoint http://localhost:8000 dynamodb delete-table --table-name users
@@ -44,7 +44,7 @@ TableDescription:
   TableStatus: ACTIVE
 ```
 
-counter テーブル。
+counterテーブル。
 
 ```yaml
 $ aws --endpoint http://localhost:8000 dynamodb delete-table --table-name counter
@@ -258,7 +258,7 @@ after
 
 ## update-item
 
-update は元ネタがないのでスクラッチ。
+updateは元ネタがないのでスクラッチ。
 
 ```php
     /**
@@ -315,8 +315,8 @@ update は元ネタがないのでスクラッチ。
 
 ## atomic counter
 
-こちらは before も含めてスクラッチ。
-counter テーブルへの初期登録が必要です。
+こちらはbeforeも含めてスクラッチ。
+counterテーブルへの初期登録が必要です。
 
 ```sh
 aws --endpoint http://localhost:8000 ddb put counter '{id: "users", counter: 0}'
@@ -410,8 +410,8 @@ after
 
 ## 感想
 
-Python/Java/Node.js は NoSQL workbench でコード生成してくれますが、PHP は生成してくれません。
+Python/Java/Node.jsはNoSQL workbenchでコード生成してくれますが、PHPは生成してくれません。
 無念。
 
 https://qiita.com/watarukura/items/1c42b625aecb7aee12fa が元記事です。
-textlint で fix しました。
+textlintでfixしました。

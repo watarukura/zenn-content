@@ -7,8 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "preview": "npx zenn preview --port 3333",
     "new:article": "npx zenn new:article --slug $(date +%Y%m%d)-$(cat /dev/urandom | base64 | fold -w 30 | head -n 1 | tr -d '+-/' | tr 'A-Z' 'a-z') --type tech --published false",
-    "lint": "textlint",
-    "fix": "textlint --fix"
+    "lint": "textlint articles/*.md",
+    "fix": "textlint --fix articles/*.md"
   },
   "repository": {
     "type": "git",
@@ -22,9 +22,7 @@
   "homepage": "https://github.com/watarukura/zenn-content#readme",
   "devDependencies": {
     "textlint": "^11.8.2",
-    "textlint-rule-preset-ja-spacing": "^2.0.2",
-    "textlint-rule-preset-ja-technical-writing": "^4.0.1",
-    "textlint-rule-prh": "^5.3.0"
+    "textlint-rule-preset-smarthr": "^1.0.0"
   },
   "dependencies": {
     "zenn-cli": "^0.1.77"
