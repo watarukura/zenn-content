@@ -3,7 +3,7 @@ title: "aws-sdk-php + PartiQL"
 emoji: "👌"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: [dynamodb, partiql, aws-sdk-php]
-published: false
+published: true
 ---
 
 # What's
