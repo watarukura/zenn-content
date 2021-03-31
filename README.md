@@ -35,7 +35,14 @@ npm run lint
 npm run fix
 ```
 
+Markdownとしての形式もlint/fixできる。
+
+```bash
+npm run lint:md
+npm run fix:md
+```
+
 ## Thanks
 
-- https://github.com/kufu/textlint-rule-preset-smarthr
-- https://zenn.dev/serima/articles/4dac7baf0b9377b0b58b
+- <https://github.com/kufu/textlint-rule-preset-smarthr>
+- <https://zenn.dev/serima/articles/4dac7baf0b9377b0b58b>

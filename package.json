@@ -9,8 +9,8 @@
     "new:article": "npx zenn new:article --slug $(date +%Y%m%d)-$(cat /dev/urandom | base64 | fold -w 30 | head -n 1 | tr -d '+-/' | tr 'A-Z' 'a-z') --type tech --published true",
     "lint": "textlint articles/*.md",
     "fix": "textlint --fix articles/*.md",
-    "lint:md": "markdownlint articles/*.md",
-    "fix:md": "markdownlint --fix articles/*.md"
+    "lint:md": "markdownlint articles/*.md --ignore node_modules",
+    "fix:md": "markdownlint --fix articles/*.md --ignore node_modules"
   },
   "repository": {
     "type": "git",

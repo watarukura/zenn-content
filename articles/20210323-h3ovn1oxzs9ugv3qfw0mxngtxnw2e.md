@@ -6,7 +6,7 @@ topics: [dynamodb]
 published: true
 ---
 
-# What's
+## What's
 
 管理画面からDynamoDBテーブルにコンテンツを登録して、APIサーバがレコードを読み出してJSONレスポンスを作るようなケースでよく使うDynamoDBテーブルの設計について書く。
 
@@ -50,7 +50,7 @@ GSI:
 - display_on(BOOL)がtrue、かつ現在時刻 < display_end_datetime(N)なレコードを取得する
 - 現在時刻 > display_start_datetime(N)なレコードをfilter expressionでフィルタすれば必要なレコードが取得できる
   - filter expressionでは取得後のレコードから必要な分だけを選別するので、キー条件式でいかに取得対象を減らせるかが重要
-  - display_start_datetime(N)をGSIキーにしたほうが見た目はわかりやすいが、現在時刻は当然のことながら大きくなり続けるので、display_end_datetime(N) をGSIキーにするべき
+  - 現在時刻は当然のことながら大きくなり続けるので、display_end_datetime(N) をGSIキーにするべき
 - display_start_datetime(N) をキーに降順でsortする
 - ↓はPartiQLで取得する例
 

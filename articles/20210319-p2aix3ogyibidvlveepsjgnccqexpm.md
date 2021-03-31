@@ -6,7 +6,7 @@ topics: [dynamodb, partiql, aws-sdk-php]
 published: true
 ---
 
-# What's
+## What's
 
 [DynamoDB-local + PartiQLが可能になった](https://aws.amazon.com/jp/about-aws/whats-new/2021/02/you-now-can-use-partiql-with-dynamodb-local-to-query-insert-update-and-delete-table-data-in-amazon-dynamodb/)ので試しているところ。
 コードは[Slim4-Skelton](https://github.com/odan/slim4-skeleton)をDynamoDB用に書き換えたもの。

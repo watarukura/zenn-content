@@ -1,0 +1,6 @@
+{
+    "editor.defaultFormatter": "taichi.vscode-textlint",
+    "editor.formatOnPaste": true,
+    "editor.formatOnSave": true,
+    "editor.formatOnType": true
+}
