@@ -19,6 +19,17 @@ jobs:
           reporter: github-pr-review
           level: warning
           textlint_flags: "articles/**"
+  markdownlint:
+    name: runner / markdownlint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: markdownlint
+        uses: reviewdog/action-markdownlint@v0.1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          reporter: github-pr-review
+          markdownlint_flags: './articles/*.md --ignore node_modules'
   audit:
     name: runner / npm
     runs-on: ubuntu-latest

@@ -12,7 +12,7 @@ published: true
 コードは[Slim4-Skelton](https://github.com/odan/slim4-skeleton)をDynamoDB用に書き換えたもの。
 
 ↓リポジトリはこちら
-https://github.com/watarukura/php_vscode_project_template
+<https://github.com/watarukura/php_vscode_project_template>
 
 ## テーブル定義
 
@@ -413,5 +413,5 @@ after
 Python/Java/Node.jsはNoSQL workbenchでコード生成してくれますが、PHPは生成してくれません。
 無念。
 
-https://qiita.com/watarukura/items/1c42b625aecb7aee12fa が元記事です。
+<https://qiita.com/watarukura/items/1c42b625aecb7aee12fa> が元記事です。
 textlintでfixしました。
