@@ -11,7 +11,8 @@ published: true
 brewで複数のPHPバージョンをインストールして使っています。
 phpenvも試したのですが依存関係を見つけてはinstallする、というのに疲れて続きませんでした...。
 PythonやJavaScriptのようにPHPもプロジェクトごとにバージョン管理できればいいのになぁ...。
-バージョンの切り替えが億劫なので、自動化できないか悩んでいたところ、数年ぶりに[PHP: the Right Way](http://ja.phptherightway.com/)を読んで、[brew-php-switcher](https://github.com/philcook/brew-php-switcher)が紹介されており、これでイケそうなのでdirenvと組み合わせてみました。
+バージョンの切り替えが億劫なので、自動化できないか悩んでいたました。
+数年ぶりに[PHP: the Right Way](http://ja.phptherightway.com/)を読んだところ、[brew-php-switcher](https://github.com/philcook/brew-php-switcher)が紹介されており、これでイケそうなのでdirenvと組み合わせてみました。
 
 ## requirements
 
@@ -19,6 +20,16 @@ PythonやJavaScriptのようにPHPもプロジェクトごとにバージョン�
 - brew
 - direnv
 - brew-php-switcher
+
+現状、以下の様になっています。
+バージョンの記載がないphpは、PHP 8.1です。
+
+```shell
+brew list | grep php
+brew-php-switcher
+php
+php@8.0
+```
 
 ## .envrc
 
@@ -41,8 +52,7 @@ fi
 
 ## 動作検証
 
-まずはPHP 8.0を使用しているプロジェクトで試してみます。
-PHP 8.1が有効な状態で、`direnv allow` してみます。
+PHP 8.1が有効な状態でPHP 8.0を使用しているプロジェクトを開いた際にバージョンが切り替わるか試してみます。
 
 ```shell
 jq -r .require.php <composer.json | grep -o "8.[0-9]"
@@ -56,6 +66,8 @@ Copyright (c) The PHP Group
 Zend Engine v4.1.2, Copyright (c) Zend Technologies
     with Zend OPcache v8.1.2, Copyright (c), by Zend Technologies
 ```
+
+.envrcを修正して、`direnv allow`します。
 
 ```shell
 direnv allow
@@ -74,6 +86,15 @@ All done!
 direnv: export ~XPC_SERVICE_NAME
 ```
 
+```shell
+php -v
+PHP 8.0.15 (cli) (built: Jan 21 2022 04:49:41) ( NTS )
+Copyright (c) The PHP Group
+Zend Engine v4.0.15, Copyright (c) Zend Technologies
+    with Zend OPcache v8.0.15, Copyright (c), by Zend Technologies
+```
+
+無事に切り替わりました！
 もう一度実行してみます。
 
 ```shell
