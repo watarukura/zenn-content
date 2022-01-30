@@ -11,8 +11,7 @@ published: true
 brewで複数のPHPバージョンをインストールして使っています。
 phpenvも試したのですが依存関係を見つけてはinstallする、というのに疲れて続きませんでした...。
 PythonやJavaScriptのようにPHPもプロジェクトごとにバージョン管理できればいいのになぁ...。
-プロジェクトごとにPHPのバージョン違いがあると切り替えが億劫なので、自動で切り替えできないか悩んでいました。
-数年ぶりに[PHP: the Right Way](http://ja.phptherightway.com/)を読んだところ、[brew-php-switcher](https://github.com/philcook/brew-php-switcher)が紹介されており、これでイケそうなのでdirenvと組み合わせてみました。
+バージョンの切り替えが億劫なので、自動化できないか悩んでいたところ、数年ぶりに[PHP: the Right Way](http://ja.phptherightway.com/)を読んで、[brew-php-switcher](https://github.com/philcook/brew-php-switcher)が紹介されており、これでイケそうなのでdirenvと組み合わせてみました。
 
 ## requirements
 
@@ -26,7 +25,7 @@ PythonやJavaScriptのようにPHPもプロジェクトごとにバージョン�
 早速、.envrcに以下を書き込みます。
 使用しているPHPのバージョンが8.0と8.1のみなので↓こんなです。
 必要に応じてgrepのパターン部分を修正ください。
-関数化してdirenvrcに書き、.envrcでは呼び出すだけにするとさらにスッキリしますが、自分の環境ではまだそこまでは不要そうなので愚直に。
+関数化してdirenvrcに書き、.envrcでは呼び出すだけにするとさらにスッキリしますが、自分の環境ではまだそこまでは不要そうなので愚直に各.envrcに書きます。
 
 ```shell
 if type brew-php-switcher &>/dev/null; then
@@ -88,7 +87,8 @@ direnv: export ~XPC_SERVICE_NAME
 ## 参考
 
 手動でPHP 8.0と8.1を切り替えるfishスクリプトを書いて使っていたのですが、自動化できて不要になりました。
-こちらも供養においておきます。
+これで、来る8.2以降への切り替えの際も困らずに済みそうです。
+供養においておきます。
 
 ```shell
 function php80
