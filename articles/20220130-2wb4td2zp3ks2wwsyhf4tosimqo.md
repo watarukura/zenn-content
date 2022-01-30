@@ -11,7 +11,6 @@ published: true
 brewで複数のPHPバージョンをインストールして使っています。
 phpenvも試したのですが依存関係を見つけてはinstallする、というのに疲れて続きませんでした...。
 PythonやJavaScriptのようにPHPもプロジェクトごとにバージョン管理できればいいのになぁ...。
-バージョンの切り替えが億劫なので、自動化できないか悩んでいたました。
 数年ぶりに[PHP: the Right Way](http://ja.phptherightway.com/)を読んだところ、[brew-php-switcher](https://github.com/philcook/brew-php-switcher)が紹介されており、これでイケそうなのでdirenvと組み合わせてみました。
 
 ## requirements
