@@ -22,9 +22,9 @@ published: true
 ## devcontainer
 
 VS Codeのdevcontainerを使います。
-moldを使ってみたかったので[Faster Rust Incremental Builds in Docker](https://purton.tech/blog/faster-rust-incremental-builds/)を参考にしつつ、最新のv1.1が使えるように書き換えています。
+moldを使ってみたかったので[Faster Rust Incremental Builds in Docker](https://purton.tech/blog/faster-rust-incremental-builds/)を参考にしつつ、最新のv1.1を使えるように書き換えています。
 (あんまりmoldの恩恵を受けられているわけではないのですが、まぁ趣味プロジェクトなので...)
-fish shellユーザなのでfishですがbashの方はこの辺消しちゃってください。
+fish shellユーザーなのでfishですがbashの方はこの辺消しちゃってください。
 ghコマンドも写経中にGitHub開くのが面倒なので使ってますがホント便利です。
 `gh pr create` -> `gh pr check --watch` -> `gh pr merge` で良いので。
 
@@ -267,6 +267,6 @@ jobs:
 詳解Rustプログラミングは残り半分くらいなのですが、写経継続していこうと思います。
 Rustにこれから入門する、という方にもおすすめです。定番のcrate(rand、clap、serdeなど)についても必要になってから使い方を教えてくれます。
 また、システムプログラミングの学習にも好適です。
-自分は未だにポインタなどが理解できてるとはいい難いのですが、読む前よりは多少理解が進んだかなと...。
+自分はいまだにポインタなどが理解できてるとはいい難いのですが、読む前よりは多少理解が進んだかなと...。
 
 写経環境を改善してたらヤクの毛刈りが楽しくなってアレコレやりました、という記事でした。
