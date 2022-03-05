@@ -8,8 +8,9 @@ published: true
 
 ## What's?
 
-詳解Rustプログラミングを写経しています。
+[詳解Rustプログラミング](https://www.shoeisha.co.jp/book/detail/9784798160221)を写経しています。
 最初はIntelliJ IDEAで書いていたのですが、補完があまり効かないのでVS Codeに乗り換えました。
+(IntelliJ IDEAで何がうまくいっていないのか調べられてないのですが...)
 ついでにとアレコレくっつけていったらゴツゴツしてきたのですが、なかなか快適なのでご紹介。
 写経中のリポジトリはこちら。
 [https://github.com/watarukura/rust_in_action_study](https://github.com/watarukura/rust_in_action_study)
@@ -44,11 +45,7 @@ RUN apt-get update && \
     libssl-dev \
     libxxhash-dev \
     zlib1g-dev \
-    pkg-config \
-    vim \
-    curl \
-    libzmq3-dev \
-    jupyter-notebook
+    pkg-config
 
 # install mold
 ENV mold_version=v1.1
@@ -60,7 +57,7 @@ RUN git clone --branch "$mold_version" --depth 1 https://github.com/rui314/mold.
     mv /mold/mold-wrapper.so /usr/bin/mold-wrapper.so && \
     make clean
 
-# install gh and fish
+# install development utilities
 RUN curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg \
       | dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg && \
     echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" \
@@ -73,7 +70,11 @@ RUN curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg \
     apt-get update && \
     apt-get install -y \
       gh \
-      fish && \
+      fish \
+      vim \
+      curl \
+      libzmq3-dev \
+      jupyter-notebook && \
     rm -rf /var/lib/apt/lists/*
 
 # use from rust-analyzer
