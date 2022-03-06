@@ -127,3 +127,121 @@ function php81
   end
 end
 ```
+
+## 2022/03/06 追記
+
+pecl installしたときにpeclやphpizeに`/usr/local/Cellar/php@8.0/8.0.16/bin/php is not found` って怒られるので、原因を調べてみました。
+brewで再インストールすると、バージョン番号.reinstallっていうディレクトリ名にインストールされる模様。
+
+peclとphpizeを書き換えてやると無事に動きました。
+もっといい方法がありそうですが...
+
+```shell
+❯ which php
+/usr/local/bin/php
+❯ ls -l /usr/local/bin/php
+lrwxr-xr-x 1 watarukura admin 42  3  2 05:58 /usr/local/bin/php -> ../Cellar/php@8.0/8.0.16.reinstall/bin/php
+❯ which pecl
+/usr/local/bin/pecl
+❯ which phpize
+/usr/local/bin/phpize
+❯ sudo sed -i.org -e 's/8.0.16/8.0.16.reinstall/g' /usr/local/bin/pecl
+❯ sudo sed -i.org -e 's/8.0.16/8.0.16.reinstall/g' /usr/local/bin/phpize
+```
+
+```diff
+❯ diff -u /usr/local/bin/pecl.org /usr/local/bin/pecl
+--- /usr/local/bin/pecl.org	2022-03-06 13:27:42.073462374 +0900
++++ /usr/local/bin/pecl	2022-03-02 15:57:12.987867522 +0900
+@@ -4,10 +4,10 @@
+ if test "x$PHP_PEAR_PHP_BIN" != "x"; then
+   PHP="$PHP_PEAR_PHP_BIN"
+ else
+-  if test "/usr/local/Cellar/php@8.0/8.0.16/bin/php" = '@'php_bin'@'; then
++  if test "/usr/local/Cellar/php@8.0/8.0.16.reinstall/bin/php" = '@'php_bin'@'; then
+     PHP=php
+   else
+-    PHP="/usr/local/Cellar/php@8.0/8.0.16/bin/php"
++    PHP="/usr/local/Cellar/php@8.0/8.0.16.reinstall/bin/php"
+   fi
+ fi
+
+@@ -16,12 +16,12 @@
+   INCDIR=$PHP_PEAR_INSTALL_DIR
+   INCARG="-d include_path=$PHP_PEAR_INSTALL_DIR"
+ else
+-  if test "/usr/local/Cellar/php@8.0/8.0.16/share/php@8.0/pear" = '@'php_dir'@'; then
++  if test "/usr/local/Cellar/php@8.0/8.0.16.reinstall/share/php@8.0/pear" = '@'php_dir'@'; then
+     INCDIR=`dirname $0`
+     INCARG=""
+   else
+-    INCDIR="/usr/local/Cellar/php@8.0/8.0.16/share/php@8.0/pear"
+-    INCARG="-d include_path=/usr/local/Cellar/php@8.0/8.0.16/share/php@8.0/pear"
++    INCDIR="/usr/local/Cellar/php@8.0/8.0.16.reinstall/share/php@8.0/pear"
++    INCARG="-d include_path=/usr/local/Cellar/php@8.0/8.0.16.reinstall/share/php@8.0/pear"
+   fi
+ fi
+```
+
+```diff
+❯ diff -u /usr/local/bin/phpize.org /usr/local/bin/phpize
+--- /usr/local/bin/phpize.org	2022-03-06 13:27:16.089971124 +0900
++++ /usr/local/bin/phpize	2022-03-02 15:57:49.274987158 +0900
+@@ -1,8 +1,8 @@
+ #!/bin/sh
+
+ # Variable declaration
+-prefix='/usr/local/Cellar/php@8.0/8.0.16'
+-datarootdir='/usr/local/Cellar/php@8.0/8.0.16/share'
++prefix='/usr/local/Cellar/php@8.0/8.0.16.reinstall'
++datarootdir='/usr/local/Cellar/php@8.0/8.0.16.reinstall/share'
+ exec_prefix="`eval echo ${prefix}`"
+ phpdir="`eval echo ${exec_prefix}/lib/php`/build"
+ includedir="`eval echo ${prefix}/include`/php"
+@@ -152,7 +152,7 @@
+ phpize_replace_prefix()
+ {
+   $SED \
+-  -e "s#/usr/local/Cellar/php@8.0/8.0.16#$prefix#" \
++  -e "s#/usr/local/Cellar/php@8.0/8.0.16.reinstall#$prefix#" \
+   < "$phpdir/phpize.m4" > configure.ac
+ }
+```
+
+peclもphpizeもシェルスクリプトなんですね。初めて知りました。
+
+```shell
+❯ pecl install --configureoptions 'enable-sockets="yes" enable-openssl="yes" enable-http2="yes" enable-mysqlnd="yes" enable-swoole-json="yes" enable-swoole-curl="yes"' openswoole-4.10.0
+❯ php --ri openswoole
+
+openswoole
+
+Open Swoole => enabled
+Author => Open Swoole Group <hello@openswoole.com>
+Version => 4.10.0
+Built => Mar  6 2022 13:08:25
+coroutine => enabled with boost asm context
+kqueue => enabled
+rwlock => enabled
+sockets => enabled
+openssl => OpenSSL 1.1.1m  14 Dec 2021
+dtls => enabled
+http2 => enabled
+json => enabled
+curl-native => enabled
+pcre => enabled
+zlib => 1.2.11
+brotli => E16777225/D16777225
+mysqlnd => enabled
+async_redis => enabled
+
+Directive => Local Value => Master Value
+swoole.enable_coroutine => On => On
+swoole.enable_library => On => On
+swoole.enable_preemptive_scheduler => Off => Off
+swoole.display_errors => On => On
+swoole.use_shortname => On => On
+swoole.unixsock_buffer_size => 262144 => 262144
+```
+
+openswooleをinstallしてみました。無事にinstallできたようです。
