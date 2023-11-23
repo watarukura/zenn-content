@@ -23,12 +23,18 @@
   },
   "homepage": "https://github.com/watarukura/zenn-content#readme",
   "devDependencies": {
-    "textlint": "^12.1.0",
-    "textlint-rule-preset-smarthr": "^1.0.0"
+    "textlint": "^13.3.3",
+    "textlint-rule-ja-no-abusage": "^3.0.0",
+    "textlint-rule-ja-no-mixed-period": "^3.0.1",
+    "textlint-rule-ja-unnatural-alphabet": "^2.0.1",
+    "textlint-rule-max-ten": "^4.0.4",
+    "textlint-rule-preset-japanese": "^8.0.0",
+    "textlint-rule-preset-smarthr": "^1.26.0",
+    "textlint-rule-prh": "^5.3.0"
   },
   "dependencies": {
-    "markdownlint": "^0.25.1",
-    "markdownlint-cli": "^0.30.0",
-    "zenn-cli": "^0.1.77"
+    "markdownlint": "^0.32.1",
+    "markdownlint-cli": "^0.37.0",
+    "zenn-cli": "^0.1.149"
   }
 }
