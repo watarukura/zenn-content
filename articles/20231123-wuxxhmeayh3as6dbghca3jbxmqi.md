@@ -22,3 +22,93 @@ Laravel10へのアップグレード時に、[大きな改修](https://github.co
 
 [Flushing entries with 2 tags in RedisTaggedCache doesn't clean up properly · laravel/framework · Discussion #46106](https://github.com/laravel/framework/discussions/46106)
 
+```php
+> Cache::tags(['liveId', 'channelId'])->put(1, 10, 20);
+= true
+
+> Cache::tags(['liveId', 'channelId'])->put(2, 20, 40);
+= true
+
+> Cache::tags(['liveId', 'channelId'])->put(3, 30, 60);
+= true
+
+> $redis = Cache::getRedis();
+= Illuminate\Redis\RedisManager {#1686}
+
+> $redis->zrange('laravel_cache:tag:channelId:entries', 0, 10, 'withscores')
+= [
+    "85142c9a6bd23d13c2ff4925786ac610a07f9992:1" => "1700631234",
+    "85142c9a6bd23d13c2ff4925786ac610a07f9992:2" => "1700631265",
+    "85142c9a6bd23d13c2ff4925786ac610a07f9992:3" => "1700631292",
+  ]
+
+> $redis->keys('*')
+= [
+    "laravel_cache:tag:liveId:entries",
+    "laravel_cache:tag:channelId:entries",
+    "laravel_cache:85142c9a6bd23d13c2ff4925786ac610a07f9992:3",
+  ]
+```
+
+```php
+> Cache::tags(['liveId', 'channelId'])->put(1, 10);
+= true
+
+> Cache::tags(['liveId', 'channelId'])->put(2, 11);
+= true
+
+> Cache::tags(['liveId', 'channelId'])->put(3, 12);
+= true
+
+> clear
+> Cache::tags(['liveId', 'channelId'])->put(1, 10);
+= true
+
+> Cache::tags(['liveId', 'channelId'])->put(2, 11);
+= true
+
+> Cache::tags(['liveId', 'channelId'])->put(3, 12);
+= true
+
+> $redis = Cache::getRedis();
+= Illuminate\Redis\RedisManager {#1686}
+
+> $redis->keys('*')
+= [
+    "laravel_cache:85142c9a6bd23d13c2ff4925786ac610a07f9992:1",
+    "laravel_cache:tag:liveId:entries",
+    "laravel_cache:tag:channelId:entries",
+    "laravel_cache:85142c9a6bd23d13c2ff4925786ac610a07f9992:2",
+    "laravel_cache:85142c9a6bd23d13c2ff4925786ac610a07f9992:3",
+  ]
+
+> $redis->zrange('laravel_cache:tag:liveId:entries', 0, 10)
+= [
+    "85142c9a6bd23d13c2ff4925786ac610a07f9992:1",
+    "85142c9a6bd23d13c2ff4925786ac610a07f9992:2",
+    "85142c9a6bd23d13c2ff4925786ac610a07f9992:3",
+  ]
+
+> $redis->zrange('laravel_cache:tag:channelId:entries', 0, 10)
+= [
+    "85142c9a6bd23d13c2ff4925786ac610a07f9992:1",
+    "85142c9a6bd23d13c2ff4925786ac610a07f9992:2",
+    "85142c9a6bd23d13c2ff4925786ac610a07f9992:3",
+  ]
+
+> Cache::tags(['liveId'])->flush();
+= true
+
+> $redis->keys('*')
+= [
+    "laravel_cache:tag:channelId:entries",
+  ]
+
+> $redis->zrange('laravel_cache:tag:channelId:entries', 0, 10)
+= [
+    "85142c9a6bd23d13c2ff4925786ac610a07f9992:1",
+    "85142c9a6bd23d13c2ff4925786ac610a07f9992:2",
+    "85142c9a6bd23d13c2ff4925786ac610a07f9992:3",
+  ]
+
+```
