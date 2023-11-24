@@ -4,6 +4,7 @@ emoji: "📝"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: [laravel, php]
 published: true
+publication_name: "torana_tech"
 ---
 
 [アップグレードガイド 10.x Laravel](https://readouble.com/laravel/10.x/ja/upgrade.html)　に記載のRedisキャッシュタグについて、Artisanコマンドで`cache:prune-stale-tags`を定期実行してください、と記載があります。  
