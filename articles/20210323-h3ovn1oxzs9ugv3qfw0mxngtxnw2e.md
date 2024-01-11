@@ -27,7 +27,7 @@ GSI:
 
 ## 管理画面
 
-- news_releaseテーブルへのput、updateを行なう
+- news_releaseテーブルへのput、updateを行う
 - ニュースリリース本文: contents(S)がそれほど長くなければレコードに持ってもよい
   - 1レコードの最大サイズは1KB
   - 1KBを超える場合はURLを保持して別ページに遷移することを考える
@@ -41,7 +41,7 @@ GSI:
 - display_on(BOOL) はfalseをdefaultにする
   - 担当部署内でレビューが終わったらtrueにする
   - 公開後に誤りが見つかった場合など、急いで非表示にしたいとき、falseに変更する
-- display_end_datetime(N) のnヶ月後をttl(N)として設定する
+- display_end_datetime(N) のnヵ月後をttl(N)として設定する
   - ttl(N)はunixtimeで指定する必要がある
 
 ## API
@@ -65,4 +65,4 @@ WHERE display_end_datetime > ?
 
 - DynamoDBのテーブル設計にはあまり実際に使うにあたっての指針になるドキュメントを見つけられていない
 - Blackbeltを見たりはしているが...
-- いい感じに設計情報がどこかに共有されると嬉しい
+- よい感じに設計情報がどこかに共有されるとうれしい
