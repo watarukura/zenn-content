@@ -130,7 +130,7 @@ end
 
 ## 2022/03/06 追記
 
-PECL installしたときにPECLやphpizeに`/usr/local/Cellar/php@8.0/8.0.16/bin/php is not found` って怒られるので、原因を調べてみました。
+pecl installしたときにPECLやphpizeに`/usr/local/Cellar/php@8.0/8.0.16/bin/php is not found` って怒られるので、原因を調べてみました。
 brewで再インストールすると、バージョン番号.reinstallっていうディレクトリ名にインストールされる模様。
 
 PECLとphpizeを書き換えてやると無事に動きました。
