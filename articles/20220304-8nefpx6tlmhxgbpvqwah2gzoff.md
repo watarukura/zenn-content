@@ -11,7 +11,7 @@ published: true
 [詳解Rustプログラミング](https://www.shoeisha.co.jp/book/detail/9784798160221)を写経しています。
 最初はIntelliJ IDEAで書いていたのですが、補完があまり効かないのでVS Codeに乗り換えました。
 (IntelliJ IDEAで何がうまくいっていないのか調べられてないのですが...)
-ついでにとアレコレくっつけていったらゴツゴツしてきたのですが、なかなか快適なのでご紹介。
+ついでにとアレコレくっつけていったらゴツゴツしてきたのですが、なかなか快適なので紹介。
 写経中のリポジトリはこちら。
 [https://github.com/watarukura/rust_in_action_study](https://github.com/watarukura/rust_in_action_study)
 
@@ -199,12 +199,12 @@ formatOnSaveがうまく動かなかったので、save時にcargo fmtを走ら�
 [evcxr](https://github.com/google/evcxr)をinstallしてRustが動くようにしました。
 小さめのコードはJupyter、大きめのコードはVS Codeで写経しています。
 fn main() はJuypterでは動かないみたいですね。(Jupyter弱者なので試行錯誤中...)
-コード片貼り付けてどう動いてるか見る、みたいなのにすごく便利です。
+コード片貼り付けてどう動いているか見る、みたいなのにすごく便利です。
 
 ## GitHub Actions
 
 lintとformatチェックだけ動かしています。
-testは、写経の中ででてきたら追加しようかなと。
+testは、写経の中でてきたら追加しようかなと。
 
 ```yaml
 name: Lint and Test
@@ -260,14 +260,14 @@ jobs:
 ## rust-analyzer
 
 複数workspaceにするとrust-analyzerがうまく動かないみたいです。
-なので、コード補完したい場合はディレクトリ構造の見直しが必要...。
+ですので、コード補完したい場合はディレクトリ構造の見直しが必要...。
 参考: [[rust-analyzer]VScodeでRustの補完機能を使いたいのに動かない](https://zenn.dev/fah_72946_engr/articles/cf53487d3cc5fc)
 
 ## まとめ
 
 詳解Rustプログラミングは残り半分くらいなのですが、写経継続していこうと思います。
-Rustにこれから入門する、という方にもおすすめです。定番のcrate(rand、clap、serdeなど)についても必要になってから使い方を教えてくれます。
+Rustにこれから入門する、という方にもお勧めです。定番のcrate(rand、clap、serdeなど)についても必要になってから使い方を教えてくれます。
 また、システムプログラミングの学習にも好適です。
-自分はいまだにポインタなどが理解できてるとはいい難いのですが、読む前よりは多少理解が進んだかなと...。
+自分はいまだにポインタなどが理解できているとはよいにくいのですが、読む前よりは多少理解が進んだかなと...。
 
 写経環境を改善してたらヤクの毛刈りが楽しくなってアレコレやりました、という記事でした。

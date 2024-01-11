@@ -35,6 +35,6 @@
   "dependencies": {
     "markdownlint": "^0.32.1",
     "markdownlint-cli": "^0.37.0",
-    "zenn-cli": "^0.1.149"
+    "zenn-cli": "^0.1.150"
   }
 }

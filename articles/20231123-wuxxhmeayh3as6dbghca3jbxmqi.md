@@ -19,7 +19,7 @@ Taylor御大が自らドキュメントを削除しています...。おいお�
 Laravel10へのアップグレード時に、[大きな改修](https://github.com/laravel/framework/pull/45690)が入って性能が向上したらしいです。  
 その改修の影響で、タイトルの`cache:prune-stale-tags`の定期実行が必要になった模様。
 
-## 複数のタグをつけたときの奇妙な挙動
+## 複数のタグを付け足ときの奇妙な挙動
 
 [Flushing entries with 2 tags in RedisTaggedCache doesn't clean up properly · laravel/framework · Discussion #46106](https://github.com/laravel/framework/discussions/46106)
 ↑のIssueで記載がありますが、複数タグをセットしている場合に、片側でflush()を呼んだ後で、flushを読んでいない側の参照が残ってしまうようです。  
@@ -118,4 +118,4 @@ zremrangebyscoreは、ソート済みセットから特定の範囲のスコア�
 
 これで、ようやく`cache:prune-stale-tags`の挙動がわかりました。  
 TTLを超過していて、かつ削除されていないエントリを削除する、というごみ掃除の機能ということです。  
-...もしかして、複数タグを使ってなければ実行しなくて良いのでは？
+...もしかして、複数タグを使っていなければ実行しなくて良いのでは？
