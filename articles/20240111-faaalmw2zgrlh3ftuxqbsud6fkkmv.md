@@ -78,8 +78,9 @@ lefthook install
 
 ## terraform importする
 
-tfstateをゆるく分割します。ネットワークとアプリケーションは分離します。  
-ネットワークはそんなに更新されないので、分離したほうが安心。
+tfstateの分割は、更新頻度が同じくらいのものをまとめるという方針にします。  
+今回は前述のsettingsに加え、network、appの3つにします。  
+(RDSなどがある場合はdatabaseを加えることが多いですが、今回は不要)
 
 ```Shell
 mkdir -p terraform/network
