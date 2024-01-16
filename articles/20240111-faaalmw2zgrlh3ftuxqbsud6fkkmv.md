@@ -177,6 +177,7 @@ GMailから<test@new-mail.example.com>にメールを送信、EC2上のpostfix�
 うまくいったのでEC2をデタッチ。
 
 次に、ECSサービスからFargateを起動して動作確認です。  
+
 ## 切り替え
 
 Route53の加重ルーティングで既存10%/新90%で振り分けします。
