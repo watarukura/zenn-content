@@ -93,7 +93,7 @@ touch import.tf
 ```
 
 import.tfにはimportブロックを書き、差分がでないところまでresourceのプロパティを書きます。  
-importが終わったらimport.tfは削除します。
+importが終わったらimport.tfは削除します。  
 ネットワークのあとは、EC2・Route53をimportします。
 
 ```Shell
