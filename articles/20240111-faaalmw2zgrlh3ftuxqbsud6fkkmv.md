@@ -144,7 +144,7 @@ cd ecspresso
 touch ecs-service-def.json
 touch ecs-task-def.json
 touch ecspresso.yml
-\```
+```
 
 ## NLB + ECSを作る
 
@@ -171,7 +171,7 @@ graph LR
 
 実はNLBを作るのは初めてなので、動作確認をします。  
 ECS Fargateが正常動作しているかはまだわからないので、とりあえずmin_capacity/max_capacityとも0にしておきます。  
-NLBに既存のEC2をアタッチ、Route53に既存のAレコード（mail.example.com）とは別にNLB用のALIASレコードをサブネットを切って追加します(new-mail.example.com)。  
+NLBに既存のEC2をアタッチ、Route53に既存のAレコード（mail.example.com）とは別にNLB用のALIASレコードを追加します(new-mail.example.com)。  
 (すぐ戻すのでterraform外で)  
 GMailから<test@new-mail.example.com>にメールを送信、EC2上のpostfixのログを見て受信を確認します。  
 うまくいったのでEC2をデタッチ。
