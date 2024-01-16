@@ -39,7 +39,7 @@ aqua g -i hashicorp/terraform
 
 ## CIを動かす準備
 
-まず、OIDCを設定します。
+OIDCを設定して、CIをセキュアに動かせるようにします。  
 アプリケーションやネットワークなどと関係ないものですので、settingsというtfstateを切ります。
 
 ```Shell
