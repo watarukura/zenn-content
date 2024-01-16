@@ -48,7 +48,7 @@ cd terraform/settings
 touch oidc.tf
 ```
 
-OIDCの設定用にoidc.tfに書き、最初はローカルからplan / applyします。  
+OIDCの設定用にoidc.tfに書き、最初だけはローカルからplan/applyします。  
 IAM role、provider等ができたところで、GitHub ActionsでCIを動かせるようにします。
 
 ```Shell
