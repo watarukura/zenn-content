@@ -157,6 +157,14 @@ graph LR
     end
 ```
 
+実はNLBを作るのは初めてなので、動作確認をします。  
+ECS Fargateが正常動作しているかはまだわからないので、とりあえずmin_capacity/max_capacityとも0にしておきます。  
+NLBに既存のEC2をアタッチ、Route53に既存のAレコード（mail.example.com）とは別にNLB用のALIASレコードをサブネットを切って追加します(new-mail.example.com)。  
+(すぐ戻すのでterraform外で)  
+GMailからtest@new-mail.example.comにメールを送信、EC2上のpostfixのログを見て受信を確認します。  
+うまくいったのでEC2をデタッチ。
+
+次に、ECSサービスからFargateを起動して動作確認です。  
 ## 切り替え
 
 Route53の加重ルーティングで既存10%/新90%で振り分けします。
