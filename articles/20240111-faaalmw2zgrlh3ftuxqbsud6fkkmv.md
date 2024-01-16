@@ -144,6 +144,8 @@ cd ecspresso
 touch ecs-service-def.json
 touch ecs-task-def.json
 touch ecspresso.yml
+\```
+
 ## NLB + ECSを作る
 
 SMTPを通したい・AutoScalingしたいので、NLBをECSの前に置きます。
