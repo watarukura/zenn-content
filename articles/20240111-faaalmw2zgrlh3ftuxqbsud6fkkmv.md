@@ -25,7 +25,7 @@ graph LR
 ## Gitリポジトリを作る
 
 とりあえずGitHubにリポジトリを作り、renovateを有効化します。  
-初手、aquaをinstall。
+次に、terraformバイナリのバージョン管理のため、aquaをinstall。
 
 ```shell
 brew install aquaproj/aqua/aqua
