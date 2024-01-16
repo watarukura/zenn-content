@@ -49,7 +49,7 @@ touch oidc.tf
 ```
 
 OIDCの設定用にoidc.tfに書き、最初だけはローカルからplan/applyします。  
-IAM role、provider等ができたところで、GitHub ActionsでCIを動かせるようにします。
+aws_iam_role、aws_iam_openid_connect_provider等ができたところで、GitHub ActionsでCIを動かすようにします。
 
 ```Shell
 mkdir .github/workflows
