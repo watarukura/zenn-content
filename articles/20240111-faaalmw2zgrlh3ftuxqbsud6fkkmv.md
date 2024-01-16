@@ -35,6 +35,7 @@ brew install aquaproj/aqua/aqua
 
 ```Shell
 aqua g -i hashicorp/terraform
+aqua i
 ```
 
 ## CIを動かす準備
