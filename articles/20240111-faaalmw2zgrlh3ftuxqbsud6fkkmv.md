@@ -2,7 +2,7 @@
 title: "postfixサーバをFargateに移植するためのterraform環境整備"
 emoji: "💨"
 type: "tech" # tech: 技術記事 / idea: アイデア
-topics: ["aws"]
+topics: ["aws", "terraform"]
 published: true
 ---
 
