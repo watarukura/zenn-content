@@ -13,7 +13,7 @@ jobs:
         with:
           submodules: true
       - name: textlint-github-pr-review
-        uses: tsuyoshicho/action-textlint@v1
+        uses: tsuyoshicho/action-textlint@v3.9.0
         with:
           github_token: ${{ secrets.github_token }}
           reporter: github-pr-review
@@ -23,7 +23,7 @@ jobs:
     name: runner / markdownlint
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: markdownlint
         uses: reviewdog/action-markdownlint@v0
         with:
@@ -35,8 +35,17 @@ jobs:
     name: runner / npm
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         with:
           submodules: true
       - name: npm audit
         run: npm audit
+  typos:
+    name: runner / typos
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: true
+      - name: typos
+        run: typos .
