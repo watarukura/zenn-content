@@ -34,12 +34,12 @@
 #     "any.go":
 #       runner: go run
 pre-commit:
-  parallel: true
+  parallel: false
   commands:
     markdown:
       glob: "*.md"
       run: |
-        npm run fix && \
-        npm run fix:md
+        pnpm run fix && \
+        pnpm run fix:md
     typos:
       run: typos .

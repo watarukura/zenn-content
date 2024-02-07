@@ -36,5 +36,14 @@
     "markdownlint": "^0.32.1",
     "markdownlint-cli": "^0.37.0",
     "zenn-cli": "^0.1.153"
-  }
+  },
+  "engines": {
+    "node": "20.11.0",
+    "pnpm": "8.15.1"
+  },
+  "volta": {
+    "node": "20.11.0",
+    "pnpm": "8.15.1"
+  },
+  "packageManager": "pnpm@8.15.1"
 }
