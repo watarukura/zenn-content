@@ -51,12 +51,50 @@ resource "aws_cur_report_definition" "example_cur_report_definition" {
   time_unit                  = "HOURLY"
   format                     = "Parquet"
   compression                = "Parquet"
-  additional_schema_elements = ["RESOURCES", "SPLIT_COST_ALLOCATION_DATA"]
+  additional_schema_elements = ["RESOURCES"]
   s3_bucket                  = "example-bucket-name"
   s3_region                  = "us-east-1"
   additional_artifacts       = ["ATHENA"]
-  report_versioning          = "OVERWRITE_REPORT
+  report_versioning          = "OVERWRITE_REPORT"
 }
+
+resource "aws_s3_bucket_policy" "cur_bucket_policy" {
+  bucket = aws_s3_bucket.cur.id
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Effect = "Allow"
+        Principal = {
+          Service = [
+            "bcm-data-exports.amazonaws.com",
+            "billingreports.amazonaws.com"
+          ]
+        }
+        Action = [
+          "s3:GetBucketPolicy",
+          "s3:PutObject",
+        ],
+        Resource = [
+          aws_s3_bucket.cur.arn,
+          "${aws_s3_bucket.cur.arn}/*",
+        ]
+        Condition = {
+          StringLike = {
+            "aws:SourceArn" = [
+              "arn:aws:cur:us-east-1:${local.account_id}:definition/*",
+              "arn:aws:bcm-data-exports:us-east-1:${local.account_id}:export/*",
+            ]
+          }
+          StringEquals = {
+            "aws:SourceAccount" = local.account_id
+          }
+        }
+      }
+    ]
+  })
+}
+
 ```
 
 さて、これをapplyしても、S3にParquet形式で出力されるだけでAthenaでクエリできません。  
@@ -65,11 +103,102 @@ resource "aws_cur_report_definition" "example_cur_report_definition" {
 CURが出力されたら、[AWS CloudFormation テンプレートを使用した Athena のセットアップ - AWS コストと使用状況レポート](https://docs.aws.amazon.com/ja_jp/cur/latest/userguide/use-athena-cf.html)に記載の通り、CloudFormationテンプレートがCURと同じバケットに出力されるので、これを実行します。
 
 ```hcl
-resource "aws_cloudformation_stack" "cfn-crawler" {
+resource "aws_cloudformation_stack" "cur_athena" {
+  name = "cur-athena"
 
+  template_url = "https://${aws_s3_bucket.cur.bucket}.s3.amazonaws.com/${local.s3_prefix}/${local.account_id}-${local.s3_prefix}/crawler-cfn.yml"
+  capabilities = ["CAPABILITY_IAM"]
 }
 ```
 
 ## BigQuery Omni
 
 最後にBigQueryです。
+
+```hcl
+resource "google_bigquery_connection" "cur" {
+  connection_id = local.connection_name
+  location      = "aws-us-east-1"
+  aws {
+    access_role {
+      iam_role_id = "arn:aws:iam::${local.account_id}:role/${local.role_name}"
+    }
+  }
+}
+
+resource "google_bigquery_dataset" "cur" {
+  provider   = google-beta
+  dataset_id = "cur_${local.account_id}_dataset"
+  location   = "aws-us-east-1"
+
+  external_dataset_reference {
+    external_source = "aws-glue://arn:aws:glue:us-east-1:${local.account_id}:database/athenacurcfn_${local.account_id}_cost_report"
+    connection      = "projects/${local.project_name}/locations/aws-us-east-1/connections/${local.connection_name}"
+  }
+}
+```
+
+```hcl
+resource "aws_iam_role" "bigquery" {
+  name                 = local.role_name
+  assume_role_policy   = data.aws_iam_policy_document.bigquery.json
+  max_session_duration = 12 * 60 * 60 # 12h
+}
+
+data "aws_iam_policy_document" "bigquery" {
+  statement {
+    effect  = "Allow"
+    actions = ["sts:AssumeRoleWithWebIdentity"]
+    principals {
+      type        = "Federated"
+      identifiers = ["accounts.google.com"]
+    }
+    condition {
+      test     = "StringEquals"
+      variable = "accounts.google.com:sub"
+      values   = [google_bigquery_connection.cur.aws[0].access_role[0].identity]
+    }
+  }
+}
+
+resource "aws_iam_policy" "bigquery" {
+  name = "bigquery-external-connection-policy"
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Effect   = "Allow"
+        Action   = ["s3:ListBucket"]
+        Resource = aws_s3_bucket.cur.arn
+      },
+      {
+        Effect = "Allow"
+        Action = ["s3:GetObject"]
+        Resource = [
+          aws_s3_bucket.cur.arn,
+          "${aws_s3_bucket.cur.arn}/*",
+        ]
+      },
+      {
+        Effect = "Allow"
+        Action = [
+          "glue:GetDatabase",
+          "glue:GetTable",
+          "glue:GetTables",
+          "glue:GetPartitions"
+        ]
+        Resource = [
+          "arn:aws:glue:us-east-1:${local.account_id}:catalog",
+          "arn:aws:glue:us-east-1:${local.account_id}:database/athenacurcfn_${local.account_id}_cost_report",
+          "arn:aws:glue:us-east-1:${local.account_id}:table/athenacurcfn_${local.account_id}_cost_report/*"
+        ]
+      }
+    ]
+  })
+}
+
+resource "aws_iam_role_policy_attachment" "bigquery" {
+  policy_arn = aws_iam_policy.bigquery.arn
+  role       = aws_iam_role.bigquery.name
+}
+```
