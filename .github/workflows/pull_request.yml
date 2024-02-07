@@ -15,6 +15,9 @@ jobs:
       - uses: aquaproj/aqua-installer@v2.2.0
         with:
           aqua_version: v2.21.0
+      - name: Setup Node with Volta
+        timeout-minutes: 3
+        uses: volta-cli/action@v4.0.1
       - name: pnpm install
         run: |
           volta install node
