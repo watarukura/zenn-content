@@ -13,3 +13,4 @@ packages:
 - name: rhysd/actionlint@v1.6.26
 - name: evilmartians/lefthook@v1.6.1
 - name: crate-ci/typos@v1.18.1
+- name: volta-cli/volta@v1.1.1
