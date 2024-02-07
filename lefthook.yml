@@ -38,6 +38,8 @@ pre-commit:
   commands:
     markdown:
       glob: "*.md"
-      run: npm run fix
+      run: |
+        npm run fix && \
+        npm run fix:md
     typos:
       run: typos .

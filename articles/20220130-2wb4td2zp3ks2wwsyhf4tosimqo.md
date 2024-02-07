@@ -130,7 +130,7 @@ end
 
 ## 2022/03/06 追記
 
-pecl installしたときにPECLやphpizeに`/usr/local/Cellar/php@8.0/8.0.16/bin/php is not found` って怒られるので、原因を調べてみました。
+PECL installしたときにPECLやphpizeに`/usr/local/Cellar/php@8.0/8.0.16/bin/php is not found` って怒られるので、原因を調べてみました。
 brewで再インストールすると、バージョン番号.reinstallっていうディレクトリ名にインストールされる模様。
 
 PECLとphpizeを書き換えてやると無事に動きました。
@@ -151,8 +151,8 @@ lrwxr-xr-x 1 watarukura admin 42  3  2 05:58 /usr/local/bin/php -> ../Cellar/php
 
 ```diff
 ❯ diff -u /usr/local/bin/pecl.org /usr/local/bin/pecl
---- /usr/local/bin/pecl.org	2022-03-06 13:27:42.073462374 +0900
-+++ /usr/local/bin/pecl	2022-03-02 15:57:12.987867522 +0900
+--- /usr/local/bin/pecl.org 2022-03-06 13:27:42.073462374 +0900
++++ /usr/local/bin/pecl 2022-03-02 15:57:12.987867522 +0900
 @@ -4,10 +4,10 @@
  if test "x$PHP_PEAR_PHP_BIN" != "x"; then
    PHP="$PHP_PEAR_PHP_BIN"
@@ -185,8 +185,8 @@ lrwxr-xr-x 1 watarukura admin 42  3  2 05:58 /usr/local/bin/php -> ../Cellar/php
 
 ```diff
 ❯ diff -u /usr/local/bin/phpize.org /usr/local/bin/phpize
---- /usr/local/bin/phpize.org	2022-03-06 13:27:16.089971124 +0900
-+++ /usr/local/bin/phpize	2022-03-02 15:57:49.274987158 +0900
+--- /usr/local/bin/phpize.org 2022-03-06 13:27:16.089971124 +0900
++++ /usr/local/bin/phpize 2022-03-02 15:57:49.274987158 +0900
 @@ -1,8 +1,8 @@
  #!/bin/sh
 

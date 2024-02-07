@@ -10,7 +10,7 @@
     "lint": "textlint articles/*.md",
     "fix": "textlint --fix articles/*.md",
     "lint:md": "markdownlint articles/*.md -c markdownlint.config.js --ignore node_modules",
-    "fix:md": "markdownlint --fix articles/*.md --ignore node_modules"
+    "fix:md": "markdownlint --fix articles/*.md -c markdownlint.config.js --ignore node_modules"
   },
   "repository": {
     "type": "git",
