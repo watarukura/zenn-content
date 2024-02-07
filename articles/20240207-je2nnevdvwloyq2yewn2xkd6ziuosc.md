@@ -138,6 +138,8 @@ resource "google_bigquery_dataset" "cur" {
 }
 ```
 
+BigQueryで連携データセットを作ると、BiqQuery Google IDが生成されるので、これを使ってIAMロールを作成します。
+
 ```hcl
 resource "aws_iam_role" "bigquery" {
   name                 = local.role_name
@@ -202,3 +204,12 @@ resource "aws_iam_role_policy_attachment" "bigquery" {
   role       = aws_iam_role.bigquery.name
 }
 ```
+
+これで完成です。  
+あとは、LookerなどでBigQueryにクエリして、勝手に更新されてドリルダウンもでき、複数アカウントを並べてチェックできるダッシュボードのできあがりです。
+
+## まとめ
+
+1日待つ、みたいな運用ハックがあるので手間はかかりますが、CloudFormationで作ったものをterraformにimportすればもうちょっと楽に作れるかもしれません。  
+このあたりはお好みで。  
+コスト異常検出、CUR、BigQueryをそれぞれmoduleにしてアカウントごとにmoduleを呼ぶ、みたいな作りにすると簡単に複数アカウントに対応できます。
