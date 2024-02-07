@@ -5,47 +5,23 @@ on:
   workflow_dispatch:
 
 jobs:
-  textlint:
-    name: runner / textlint
+  lint:
+    name: textlint
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4.1.1
         with:
           submodules: true
-      - name: textlint-github-pr-review
-        uses: tsuyoshicho/action-textlint@v3.9.0
+      - uses: aquaproj/aqua-installer@v2.2.0
         with:
-          github_token: ${{ secrets.github_token }}
-          reporter: github-pr-review
-          level: warning
-          textlint_flags: "articles/*.md"
-  markdownlint:
-    name: runner / markdownlint
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
+          aqua_version: v2.21.0
+      - name: pnpm install
+        run: pnpm install
+      - name: textlint
+        run: pnpm run lint
       - name: markdownlint
-        uses: reviewdog/action-markdownlint@v0
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          reporter: github-pr-review
-          level: warning
-          markdownlint_flags: 'articles/*.md'
-  audit:
-    name: runner / npm
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          submodules: true
-      - name: npm audit
-        run: npm audit
-  typos:
-    name: runner / typos
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          submodules: true
+        run: pnpm run lint:md
+      - name: audit
+        run: pnpm audit
       - name: typos
         run: typos .
