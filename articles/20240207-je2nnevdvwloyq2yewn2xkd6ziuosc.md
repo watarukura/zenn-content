@@ -212,4 +212,4 @@ resource "aws_iam_role_policy_attachment" "bigquery" {
 
 1日待つ、みたいな運用ハックがあるので手間はかかりますが、CloudFormationで作ったものをterraformにimportすればもうちょっと楽に作れるかもしれません。  
 このあたりはお好みで。  
-コスト異常検出、CUR、BigQueryをそれぞれmoduleにしてアカウントごとにmoduleを呼ぶ、みたいな作りにすると簡単に複数アカウントに対応できます。
+コスト異常検出、CUR、BigQueryをそれぞれモジュールにしてアカウントごとにモジュールを呼ぶ、みたいな作りにすると簡単に複数アカウントに対応できます。
