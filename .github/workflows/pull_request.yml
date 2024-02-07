@@ -20,8 +20,10 @@ jobs:
         uses: volta-cli/action@v4.0.1
       - name: pnpm install
         run: |
+          set -xv
           volta install node
           corepack enable pnpm
+          volta install pnpm
           pnpm install
       - name: textlint
         run: pnpm run lint
