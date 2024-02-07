@@ -16,7 +16,10 @@ jobs:
         with:
           aqua_version: v2.21.0
       - name: pnpm install
-        run: volta install && corepack enable pnpm && pnpm install
+        run: |
+          volta install node
+          corepack enable pnpm
+          pnpm install
       - name: textlint
         run: pnpm run lint
       - name: markdownlint
