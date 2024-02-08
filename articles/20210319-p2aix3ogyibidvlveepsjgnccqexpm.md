@@ -9,7 +9,7 @@ published: true
 ## What's
 
 [DynamoDB-local + PartiQLが可能になった](https://aws.amazon.com/jp/about-aws/whats-new/2021/02/you-now-can-use-partiql-with-dynamodb-local-to-query-insert-update-and-delete-table-data-in-amazon-dynamodb/)ので試しているところ。
-コードは[Slim4-Skelton](https://github.com/odan/slim4-skeleton)をDynamoDB用に書き換えたもの。
+コードは[Slim4-Skeleton](https://github.com/odan/slim4-skeleton)をDynamoDB用に書き換えたもの。
 
 ↓リポジトリはこちら
 <https://github.com/watarukura/php_vscode_project_template>

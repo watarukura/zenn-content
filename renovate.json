@@ -1,0 +1,11 @@
+{
+  "extends": [
+    "github>aquaproj/aqua-renovate-config#2.0.0"
+  ],
+  "packageRules": [
+    {
+      "matchUpdateTypes": ["patch", "minor"],
+      "groupName": "all minor and patch dependencies"
+    }
+  ]
+}

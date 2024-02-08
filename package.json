@@ -10,7 +10,7 @@
     "lint": "textlint articles/*.md",
     "fix": "textlint --fix articles/*.md",
     "lint:md": "markdownlint articles/*.md -c markdownlint.config.js --ignore node_modules",
-    "fix:md": "markdownlint --fix articles/*.md --ignore node_modules"
+    "fix:md": "markdownlint --fix articles/*.md -c markdownlint.config.js --ignore node_modules"
   },
   "repository": {
     "type": "git",
@@ -35,6 +35,15 @@
   "dependencies": {
     "markdownlint": "^0.32.1",
     "markdownlint-cli": "^0.37.0",
-    "zenn-cli": "^0.1.150"
-  }
+    "zenn-cli": "^0.1.153"
+  },
+  "engines": {
+    "node": "20.11.0",
+    "pnpm": "8.15.1"
+  },
+  "volta": {
+    "node": "20.11.0",
+    "pnpm": "8.15.1"
+  },
+  "packageManager": "pnpm@8.15.1"
 }
