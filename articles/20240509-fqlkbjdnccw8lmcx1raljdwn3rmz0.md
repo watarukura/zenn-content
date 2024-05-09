@@ -11,7 +11,7 @@ cronジョブやone shotのジョブを実行する環境としてECS Taskを利
 で、StepFunctionsがコケてエラーになったときはSlackに通知したい。  
 これもアルアルかなと。  
 ただ、このためにSlackでbotトークンを発行してLambdaを作って、とか面倒でやりたくない！  
-という強い気持ちでSNS + AWS Chatbot経由で通知を構築しました。  
+という強い気持ちでSNS + AWS Chatbot経由での通知を構築しました。  
 Terraformを使用します。
 
 ## StepFunctions
@@ -159,15 +159,13 @@ RunTask失敗時のoutputは以下のような形式です。
    }
 ```
 
-変換前
-
 ```json
 {
   "Cause": "arn:aws:ecs:ap-northeast-1:000000000000:task/sample/7446f4e4ff8441eabc8919fe51d8cac5"
 }
 ```
 
-変換後
+↓
 
 ```json
 {
@@ -187,15 +185,13 @@ RunTask失敗時のoutputは以下のような形式です。
    }
 ```
 
-変換前
-
 ```json
 {
   "Cause": ["arn:aws:ecs:ap-northeast-1:000000000000:task", "sample", "7446f4e4ff8441eabc8919fe51d8cac5"]
 }
 ```
 
-変換後
+↓
 
 ```json
 {

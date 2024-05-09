@@ -35,6 +35,7 @@
   "dependencies": {
     "markdownlint": "^0.32.1",
     "markdownlint-cli": "^0.37.0",
+    "textlint-rule-web-plus-db": "^1.1.5",
     "zenn-cli": "^0.1.153"
   },
   "engines": {
