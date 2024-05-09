@@ -9,10 +9,6 @@
     "ja-no-abusage": true,
     "ja-no-mixed-period": true,
     "ja-unnatural-alphabet": true,
-    "prh": {
-      "rulePaths": [
-        "node_modules/prh/prh-rules/media/WEB+DB_PRESS.yml"
-      ]
-    }
+    "web-plus-db": true
   }
 }
