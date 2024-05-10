@@ -9,7 +9,7 @@ jobs:
     name: textlint
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4.1.1
+      - uses: actions/checkout@v4.1.5
         with:
           submodules: true
       - uses: aquaproj/aqua-installer@v3.0.0
@@ -17,7 +17,7 @@ jobs:
           aqua_version: v2.27.3
       - name: Setup Node with Volta
         timeout-minutes: 3
-        uses: volta-cli/action@v4.0.1
+        uses: volta-cli/action@v4.1.1
       - name: pnpm install
         run: |
           set -xv
