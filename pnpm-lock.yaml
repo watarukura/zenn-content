@@ -44,8 +44,8 @@ importers:
         specifier: ^10.0.3
         version: 10.0.3
       textlint-rule-prh:
-        specifier: ^5.3.0
-        version: 5.3.0
+        specifier: ^6.0.0
+        version: 6.0.0
 
 packages:
 
@@ -1369,6 +1369,9 @@ packages:
 
   textlint-rule-prh@5.3.0:
     resolution: {integrity: sha512-gdod+lL1SWUDyXs1ICEwvQawaSshT3mvPGufBIjF2R5WFPdKQDMsiuzsjkLm+aF+9d97dA6pFsiyC8gSW7mSgg==}
+
+  textlint-rule-prh@6.0.0:
+    resolution: {integrity: sha512-byU7eUyhabX2FKx3ShOktKkmKLG5dhR0ru+PGllKgafKKWXtzOIAhAaDlqMC5qU6b3Jaz5rKQcnroGVCEjcP1Q==}
 
   textlint-rule-sentence-length@5.0.0:
     resolution: {integrity: sha512-NRbzbMYSKZVZWTarJo/uVpHMGe91uZyR4td6fipWmDAwJjjX2HYa6aYEfLM/X99ymo9aLUnOD6wWaUttgViRbw==}
@@ -3180,6 +3183,12 @@ snapshots:
       prh: 5.4.4
       textlint-rule-helper: 2.3.1
       untildify: 3.0.3
+
+  textlint-rule-prh@6.0.0:
+    dependencies:
+      '@babel/parser': 7.24.5
+      prh: 5.4.4
+      textlint-rule-helper: 2.3.1
 
   textlint-rule-sentence-length@5.0.0:
     dependencies:
