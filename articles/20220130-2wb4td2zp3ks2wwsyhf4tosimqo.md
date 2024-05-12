@@ -130,7 +130,9 @@ end
 
 ## 2022/03/06 追記
 
+<!-- textlint-disable -->
 PECL installしたときにPECLやphpizeに`/usr/local/Cellar/php@8.0/8.0.16/bin/php is not found` って怒られるので、原因を調べてみました。
+<!-- textlint-enable -->
 brewで再インストールすると、バージョン番号.reinstallっていうディレクトリ名にインストールされる模様。
 
 PECLとphpizeを書き換えてやると無事に動きました。
@@ -208,7 +210,7 @@ lrwxr-xr-x 1 watarukura admin 42  3  2 05:58 /usr/local/bin/php -> ../Cellar/php
  }
 ```
 
-PECLもphpizeもシェルスクリプトなんですね。初めて知りました。
+PECL、phpizeは両方ともシェルスクリプトなんですね。初めて知りました。
 
 ```shell
 ❯ pecl install --configureoptions 'enable-sockets="yes" enable-openssl="yes" enable-http2="yes" enable-mysqlnd="yes" enable-swoole-json="yes" enable-swoole-curl="yes"' openswoole-4.10.0

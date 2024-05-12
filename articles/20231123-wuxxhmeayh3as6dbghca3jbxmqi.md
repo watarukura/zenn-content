@@ -12,16 +12,20 @@ publication_name: "torana_tech"
 
 ## Laravelキャッシュファサードのタグ機能
 
+<!-- textlint-disable -->
 [undocument cache tags due to complexity of implementation · laravel/docs@63dde39](https://github.com/laravel/docs/commit/63dde39470588ab1ad39cea9a592f0838ca5ad47)
+<!-- textlint-enable -->
 Taylor御大が自らドキュメントを削除しています...。おいおい。  
 
-タグ機能は、複数のキーに目印(タグ)をつける、というもので、まとめて削除する、みたいなときに便利な機能です。  
+タグ機能は、複数のキーに目印(タグ)をつける、というもので「複数のキーをまとめて削除する」みたいなときに便利な機能です。  
 Laravel10へのアップグレード時に、[大きな改修](https://github.com/laravel/framework/pull/45690)が入って性能が向上したらしいです。  
 その改修の影響で、タイトルの`cache:prune-stale-tags`の定期実行が必要になった模様。
 
 ## 複数のタグを付け足ときの奇妙な挙動
 
+<!-- textlint-disable -->
 [Flushing entries with 2 tags in RedisTaggedCache doesn't clean up properly · laravel/framework · Discussion #46106](https://github.com/laravel/framework/discussions/46106)
+<!-- textlint-enable -->
 ↑のIssueで記載がありますが、複数タグをセットしている場合に、片側でflush()を呼んだ後で、flushを読んでいない側の参照が残ってしまうようです。  
 tinkerを使って調べてみました。
 

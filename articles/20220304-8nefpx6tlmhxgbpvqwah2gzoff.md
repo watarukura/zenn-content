@@ -9,8 +9,10 @@ published: true
 ## What's?
 
 [詳解Rustプログラミング](https://www.shoeisha.co.jp/book/detail/9784798160221)を写経しています。
-最初はIntelliJ IDEAで書いていたのですが、補完があまり効かないのでVS Codeに乗り換えました。
-(IntelliJ IDEAで何がうまくいっていないのか調べられてないのですが...)
+<!-- textlint-disable -->
+最初はIntelliJ IDEAで書いていたのですが、補完があまり効かずVS Codeに乗り換えました。
+<!-- textlint-enable -->
+(IntelliJ IDEAの設定のどこでうまくいっていないのかまでは調べられてないです...)
 ついでにとアレコレくっつけていったらゴツゴツしてきたのですが、なかなか快適なので紹介。
 写経中のリポジトリはこちら。
 [https://github.com/watarukura/rust_in_action_study](https://github.com/watarukura/rust_in_action_study)
@@ -24,9 +26,11 @@ published: true
 
 VS Codeのdevcontainerを使います。
 moldを使ってみたかったので[Faster Rust Incremental Builds in Docker](https://purton.tech/blog/faster-rust-incremental-builds/)を参考にしつつ、最新のv1.1を使えるように書き換えています。
+<! textlint-disable -->
 (あんまりmoldの恩恵を受けられているわけではないのですが、まぁ趣味プロジェクトなので...)
-fish shellユーザーなのでfishですがbashの方はこの辺消しちゃってください。
-ghコマンドも写経中にGitHub開くのが面倒なので使ってますがホント便利です。
+<! textlint-enable -->
+fish shellユーザーなので、bashユーザの方はこの辺消しちゃってください。
+ghコマンドも写経中にGitHub開くのが面倒で使ってます。ホント便利です。
 `gh pr create` -> `gh pr check --watch` -> `gh pr merge` で良いので。
 
 ```dockerfile
@@ -268,6 +272,6 @@ jobs:
 詳解Rustプログラミングは残り半分くらいなのですが、写経継続していこうと思います。
 Rustにこれから入門する、という方にもお勧めです。定番のcrate(rand、clap、serdeなど)についても必要になってから使い方を教えてくれます。
 また、システムプログラミングの学習にも好適です。
-自分はいまだにポインタなどが理解できているとはよいにくいのですが、読む前よりは多少理解が進んだかなと...。
+自分はいまだにポインタなどが理解できているとは言いにくいのですが、読む前よりは多少理解が進んだかなと...。
 
 写経環境を改善してたらヤクの毛刈りが楽しくなってアレコレやりました、という記事でした。

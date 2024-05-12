@@ -4,11 +4,14 @@
       "extensions": [".md"]
     }
   },
+  "filters": {
+    "comments": true
+  },
   "rules": {
-    "preset-japanese": true,
+    "web-plus-db": true,
     "ja-no-abusage": true,
     "ja-no-mixed-period": true,
     "ja-unnatural-alphabet": true,
-    "web-plus-db": true
+    "preset-japanese": true
   }
 }
