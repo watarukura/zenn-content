@@ -100,7 +100,9 @@ resource "aws_s3_bucket_policy" "cur_bucket_policy" {
 さて、これをapplyしても、S3にParquet形式で出力されるだけでAthenaでクエリできません。  
 まずは、CURの出力を待つ必要があります。1日2回出力されるので、↑を実行して、ステータスがhealthyであることを確認したら翌日まで待ちましょう。
 
+<!-- textlint-disable -->
 CURが出力されたら、[AWS CloudFormation テンプレートを使用した Athena のセットアップ - AWS コストと使用状況レポート](https://docs.aws.amazon.com/ja_jp/cur/latest/userguide/use-athena-cf.html)に記載の通り、CloudFormationテンプレートがCURと同じバケットに出力されるので、これを実行します。
+<!-- textlint-enable -->
 
 ```hcl
 resource "aws_cloudformation_stack" "cur_athena" {

@@ -40,7 +40,7 @@ aqua i
 
 ## CIを動かす準備
 
-OIDCを設定して、CIをセキュアに動かせるようにします。  
+OIDCを設定して、CIをセキュアにします。  
 アプリケーションやネットワークなどと関係ないものですので、settingsというtfstateを切ります。
 
 ```Shell
@@ -119,7 +119,7 @@ touch main.cf
 touch entrypoint.sh
 ```
 
-`docker run` で動かせるようになったら、ECRにpushできるようにします。
+`docker run` で動かせるようになったら、ECRへpushできるようにします。
 
 ```Shell
 mkdir -p terraform/app
@@ -180,6 +180,6 @@ GMailから<test@new-mail.example.com>にメールを送信、EC2上のpostfix�
 
 ## 切り替え
 
-Route53に再びALIASレコードを追加して、加重ルーティングで既存10％/新90％で振り分けします。  
+Route53に再びALIASレコードを追加して、加重ルーティングを使用して既存10％/新90％で振り分けします。  
 問題なく動作したので、50％/50％ -> 0％/100％という順序で加重を変更しました。  
 無事に切り替えられたら、EC2を削除します。
