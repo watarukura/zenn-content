@@ -1,11 +1,18 @@
 {
   "extends": [
-    "github>aquaproj/aqua-renovate-config#2.3.0"
+    "github>aquaproj/aqua-renovate-config#2.3.0",
+    "config:best-practices"
   ],
   "packageRules": [
     {
       "matchUpdateTypes": ["patch", "minor"],
       "groupName": "all minor and patch dependencies"
+    },
+    {
+      "groupName": "aqua devDependencies",
+      "matchFileNames": [
+        "aqua.ya?ml"
+      ]
     }
   ]
 }
