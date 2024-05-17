@@ -26,25 +26,25 @@ importers:
         version: 0.1.153
     devDependencies:
       textlint:
-        specifier: ^14.0.4
+        specifier: 14.0.4
         version: 14.0.4
       textlint-filter-rule-comments:
-        specifier: ^1.2.2
+        specifier: 1.2.2
         version: 1.2.2(textlint@14.0.4)
       textlint-rule-ja-no-abusage:
-        specifier: ^3.0.0
+        specifier: 3.0.0
         version: 3.0.0
       textlint-rule-ja-no-mixed-period:
-        specifier: ^3.0.1
+        specifier: 3.0.1
         version: 3.0.1
       textlint-rule-ja-unnatural-alphabet:
-        specifier: ^2.0.1
+        specifier: 2.0.1
         version: 2.0.1
       textlint-rule-preset-japanese:
-        specifier: ^10.0.3
+        specifier: 10.0.3
         version: 10.0.3
       textlint-rule-prh:
-        specifier: ^6.0.0
+        specifier: 6.0.0
         version: 6.0.0
 
 packages:
