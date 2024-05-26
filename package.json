@@ -33,7 +33,7 @@
   },
   "dependencies": {
     "markdownlint": "^0.34.0",
-    "markdownlint-cli": "^0.40.0",
+    "markdownlint-cli": "^0.41.0",
     "textlint-rule-web-plus-db": "^1.1.5",
     "zenn-cli": "^0.1.153"
   },
