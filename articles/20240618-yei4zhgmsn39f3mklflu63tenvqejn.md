@@ -120,6 +120,7 @@ general_settings:
 ```
 
 あとは、direnvでOPENAI_API_KEYを環境変数として読み込むようにして、`docker compose up`します。
+ブラウザでlocalhost:3000を開けばOK。
 
 ![img.png](images/20240618_openwebui.png)
 
