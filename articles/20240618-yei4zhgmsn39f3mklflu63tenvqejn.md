@@ -64,7 +64,7 @@ apiKeyとurlを書き換えて、bookmarkとして保存します。
 を開いて、bookmarkletを実行すると↓こんな感じ。  
 (ポップアップブロックが動いちゃうので、お嫌いな方はconsole.logに流す方がいいかも)
 
-![img.png](images/20240618_summary.png)
+![img.png](https://github.com/watarukura/zenn-content/blob/main/articles/images/20240618_openwebui.png?raw=true)
 
 ## 社内で安心して使えるChatGPTを準備する
 
@@ -122,7 +122,7 @@ general_settings:
 あとは、direnvでOPENAI_API_KEYを環境変数として読み込むようにして、`docker compose up`します。
 ブラウザでlocalhost:3000を開けばOK。
 
-![img.png](images/20240618_openwebui.png)
+![img.png](https://github.com/watarukura/zenn-content/blob/main/articles/images/20240618_summary.png?raw=true)
 
 ## まとめ
 
