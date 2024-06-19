@@ -77,7 +77,7 @@ LiteLLMを使ってプロキシしてやればいい様子。
 ```yaml
 services:
   openai-proxy:
-    image: ghcr.io/berriai/litellm:main-latest@sha256:fb890f24682337f86db28090e1245c1b9f89e45c2414875ce6efd0bf6e402b3c
+    image: ghcr.io/berriai/litellm:main-latest
     ports:
       - "8001:8000"
     volumes:
