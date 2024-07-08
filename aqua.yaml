@@ -11,6 +11,6 @@ registries:
   ref: v4.202.0 # renovate: depName=aquaproj/aqua-registry
 packages:
 - name: rhysd/actionlint@v1.7.1
-- name: evilmartians/lefthook@v1.6.18
+- name: evilmartians/lefthook@v1.7.1
 - name: crate-ci/typos@v1.23.1
 - name: volta-cli/volta@v1.1.1
