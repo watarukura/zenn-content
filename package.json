@@ -38,11 +38,11 @@
     "zenn-cli": "^0.1.153"
   },
   "engines": {
-    "node": "20.15.1",
+    "node": "20.16.0",
     "pnpm": "9.6.0"
   },
   "volta": {
-    "node": "20.15.1",
+    "node": "20.16.0",
     "pnpm": "9.6.0"
   },
   "packageManager": "pnpm@9.6.0",
