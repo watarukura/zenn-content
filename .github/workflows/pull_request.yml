@@ -17,7 +17,7 @@ jobs:
           aqua_version: v2.30.0
       - name: Setup Node with Volta
         timeout-minutes: 3
-        uses: volta-cli/action@2e822b56a79c7ae5710ee51fbd99e93b95149829 # v4.2.0
+        uses: volta-cli/action@5c175f92dea6f48441c436471e6479dbc192e194 # v4.2.1
       - name: pnpm install
         run: |
           set -xv
