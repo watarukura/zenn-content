@@ -8,9 +8,9 @@
 #   - all
 registries:
 - type: standard
-  ref: v4.226.0 # renovate: depName=aquaproj/aqua-registry
+  ref: v4.227.0 # renovate: depName=aquaproj/aqua-registry
 packages:
-- name: rhysd/actionlint@v1.7.2
+- name: rhysd/actionlint@v1.7.3
 - name: evilmartians/lefthook@v1.7.17
 - name: crate-ci/typos@v1.24.6
 - name: volta-cli/volta@v2.0.1
