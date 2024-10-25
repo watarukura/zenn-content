@@ -115,7 +115,7 @@ resource "aws_sfn_state_machine" "sample" {
 RunTaskが失敗した場合は、全部CatchしてSNS経由でAWS Chatbotを起動し、Slackへ通知します。
 
 RunTask失敗時のoutputは以下のような形式です。  
-ここから、ECSタスクIDを取り出したいので、StepFunctionsの組込み数を使用します。
+ここから、ECSタスクIDを取り出したいので、StepFunctionsの組込み関数を使用します。
 
 <!-- markdownlint-disable -->
 ```json
@@ -129,9 +129,9 @@ RunTask失敗時のoutputは以下のような形式です。
 ```
 <!-- markdownlint-enable-->
 
-## StepFunctions組込み数
+## StepFunctions組込み関数
 
-組込み数をネストして使う、みたいなことができればよかったのですが、できなそうでした。  
+組込み関数をネストして使う、みたいなことができればよかったのですが、できなそうでした。  
 (StepFunctionsコンソールで保存しようとすると、バリデーションで落ちる)  
 諦めて複数ステップで変換します。
 
