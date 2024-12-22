@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "preview": "npx zenn preview --port 3333",
     "new:article": "npx zenn new:article --slug $(date +%Y%m%d)-$(cat /dev/urandom | base64 | fold -w 30 | head -n 1 | tr -d '+-/' | tr 'A-Z' 'a-z') --type tech --published true",
-    "lint": "textlint articles/*.md",
+    "lint": "textlint --format pretty-error articles/*.md",
     "fix": "textlint --fix articles/*.md",
     "lint:md": "markdownlint articles/*.md -c markdownlint.config.js --ignore node_modules",
     "fix:md": "markdownlint --fix articles/*.md -c markdownlint.config.js --ignore node_modules"
