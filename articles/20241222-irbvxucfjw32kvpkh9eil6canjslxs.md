@@ -1,6 +1,6 @@
 ---
 title: "CURをduckdbでクエリしてevidenceでチャートにする"
-emoji: "🔥"
+emoji: "🦆"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["AWS", "duckdb", "evidence"]
 published: true
@@ -34,7 +34,7 @@ duckdbなので、GROUP BYももっとスマートに書けるのですが手抜
 ## evidenceでチャート作成
 
 evidenceをセットアップします。  
-https://github.com/evidence-dev/template#get-started-using-the-cli こちらの通り実行します。
+<https://github.com/evidence-dev/template#get-started-using-the-cli> こちらの通り実行します。
 
 ```bash
 npx degit evidence-dev/template my-project
@@ -65,6 +65,8 @@ options:
 
 sourceの追加・修正の都度、npm run sourcesを実行します。  
 pages/index.mdを書き換えて、duckdbへのクエリ結果を出力するようにします。
+markdownで書くSQLからは、sourcesファイル中の*.sqlがテーブル扱いになるようです。  
+(cur.sqlを置かないと、「そんなテーブルないよ！」ってエラーが出ます)
 
 ````markdown
 ---
@@ -202,7 +204,8 @@ SQL
 
 <!-- textlint-disable -->
 duckdbもevidenceもいいぞ！
-<!-- textlint-enable -->
 
-https://github.com/duckdb/duckdb  
+https://github.com/duckdb/duckdb
+
 https://github.com/evidence-dev/evidence
+<!-- textlint-enable -->
