@@ -205,6 +205,8 @@ SQL
 <!-- textlint-disable -->
 duckdbもevidenceもいいぞ！
 <!-- textlint-enable -->
+ところで、pnpmを最近使っているのですが、evidenceテンプレートから`pnpm i && pnpm sources && pnpm dev`するとviteコマンドがない、とエラーが出ます。
+そのため、npmにもどしたりしました...。frontend何もわからん。
 
 <!-- markdownlint-disable MD034 -->
 https://github.com/duckdb/duckdb
