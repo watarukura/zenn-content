@@ -204,8 +204,10 @@ SQL
 
 <!-- textlint-disable -->
 duckdbもevidenceもいいぞ！
+<!-- textlint-enable -->
 
+<!-- markdownlint-disable MD034 -->
 https://github.com/duckdb/duckdb
 
 https://github.com/evidence-dev/evidence
-<!-- textlint-enable -->
+<!-- markdownlint-enable MD034 -->
