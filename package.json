@@ -39,13 +39,13 @@
   },
   "engines": {
     "node": "22.13.1",
-    "pnpm": "9.15.5"
+    "pnpm": "10.2.0"
   },
   "volta": {
     "node": "22.13.1",
-    "pnpm": "9.15.5"
+    "pnpm": "10.2.0"
   },
-  "packageManager": "pnpm@9.15.5",
+  "packageManager": "pnpm@10.2.0",
   "pnpm": {
     "overrides": {
       "js-yaml@<3.13.0": ">=3.13.0",
