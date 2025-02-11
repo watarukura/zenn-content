@@ -2,10 +2,19 @@
 
 zenn記事公開用リポジトリ。
 
+## 必要なツール
+
+- aquaproj/aqua
+  - `brew install aquaproj/aqua/aqua` でinstall
+- lefthook
+  - aquaをinstallしたあと、初回のみ`lefthook install`が必要
+- pnpm
+  - node.jsはaquaでinstallされるので、`corepack enable pnpm`する
+
 ## 記事を書く
 
 ```bash
-npm run new:article
+pnpm new:article
 ```
 
 VS Codeで書く。
@@ -26,20 +35,20 @@ gh pr checks
 ローカル実行してもよい。
 
 ```bash
-npm run lint
+pnpm lint
 ```
 
 自動修正されない場合は手で直すこと。
 
 ```bash
-npm run fix
+pnpm fix
 ```
 
 Markdownとしての形式もlint/fixできる。
 
 ```bash
-npm run lint:md
-npm run fix:md
+pnpm lint:md
+pnpm fix:md
 ```
 
 ## Thanks
