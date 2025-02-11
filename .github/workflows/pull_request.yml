@@ -19,7 +19,6 @@ jobs:
         uses: actions/setup-node@v4.2.0
         with:
           node-version-file: package.json
-          cache: 'pnpm'
       - name: pnpm install
         run: |
           pnpm install
