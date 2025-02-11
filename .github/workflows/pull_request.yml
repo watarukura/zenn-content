@@ -18,7 +18,6 @@ jobs:
           node-version-file: package.json
       - name: pnpm install
         run: |
-          corepack enable pnpm
           pnpm i -g corepack
           pnpm install
       - name: textlint
