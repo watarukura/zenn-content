@@ -43,3 +43,7 @@ pre-commit:
         pnpm run fix:md
     typos:
       run: typos .
+    actionlint:
+      root: .github/workflows
+      glob: "*.ya?ml"
+      run: actionlint
