@@ -12,5 +12,5 @@ registries:
 packages:
 - name: rhysd/actionlint@v1.7.7
 - name: evilmartians/lefthook@v1.10.10
-- name: crate-ci/typos@v1.29.5
+- name: crate-ci/typos@v1.29.7
 - name: volta-cli/volta@v2.0.2
