@@ -14,4 +14,4 @@ packages:
 - name: evilmartians/lefthook@v1.10.10
 - name: crate-ci/typos@v1.29.7
 - name: volta-cli/volta@v2.0.2
-- name: nodejs/node@v22.14.0
+- name: nodejs/node@v23.8.0
