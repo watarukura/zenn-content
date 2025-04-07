@@ -11,7 +11,7 @@ registries:
   ref: v4.340.0 # renovate: depName=aquaproj/aqua-registry
 packages:
 - name: rhysd/actionlint@v1.7.7
-- name: evilmartians/lefthook@v1.11.6
+- name: evilmartians/lefthook@v1.11.7
 - name: crate-ci/typos@v1.31.1
 - name: nodejs/node@v22.14.0
-- name: pnpm/pnpm@v10.7.1
+- name: pnpm/pnpm@v10.8.0
