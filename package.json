@@ -29,7 +29,7 @@
     "textlint-rule-ja-no-mixed-period": "3.0.1",
     "textlint-rule-ja-unnatural-alphabet": "2.0.1",
     "textlint-rule-preset-japanese": "10.0.4",
-    "textlint-rule-prh": "6.0.0"
+    "textlint-rule-prh": "6.1.0"
   },
   "dependencies": {
     "markdownlint": "^0.37.0",
