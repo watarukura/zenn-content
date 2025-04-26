@@ -11,7 +11,9 @@ published: true
 
 ## Confluence Storage Format
 
+<!-- textlint-disable japanese/sentence-length -->
 [Confluence 保存形式 | Confluence Data Center 9.4 | アトラシアン製品ドキュメント](https://ja.confluence.atlassian.com/doc/confluence-storage-format-790796544.html)
+<!-- textlint-enable -->
 Confluence Serverでは、Confluence Storage FormatというXHTMLベースのフォーマットで保存されます。  
 REST APIを使って、storage形式で出力することもできます。  
 body部分だけ抜き出したHTMLのような奇妙な形式になります。
@@ -28,7 +30,9 @@ cat tmp.json | jq -r .body.storage.value
 <p class="auto-cursor-target"><br /></p><table><tbody><tr><th><p>1</p></th><th><p>2</p></th><th><p>3</p></th></tr><tr><td><p>foo</p></td><td><p>bar</p></td><td><p><br /></p></td></tr></tbody></table><p class="auto-cursor-target"><br /></p>```
 ```
 
+<!-- textlint-disable japanese/sentence-length -->
 試してみたところ、[microsoft/markitdown: Python tool for converting files and office documents to Markdown.](https://github.com/microsoft/markitdown) を使うとmarkdownに変換できました。
+<!-- textlint-enable japanese/sentence-length -->
 
 ```shell
 ❯ jq -r .body.storage.value <tmp.json |
@@ -46,11 +50,13 @@ cat tmp.json | jq -r .body.storage.value
 markdownまたはConfluence Wiki形式で記事中に「マークアップを挿入」が可能です。
 [Confluence Wiki Markup | Confluence Data Center 9.4 | Atlassian Documentation](https://confluence.atlassian.com/doc/confluence-wiki-markup-251003035.html)
 
-が、REST APIでmarkdown形式でpage contentを作成する際、マークアップの方式を選択できません。  
+が、REST APIを使用してmarkdown形式でpage contentを作成する際、マークアップの方式を選択できません。  
 そのためか、markdown形式での作成ではテーブルなどが崩れてしまうため、Confluence Wiki形式での作成がオススメです。
 [Solved: Insert Confluence / Wiki Markdown via API](https://community.atlassian.com/forums/Confluence-questions/Insert-Confluence-Wiki-Markdown-via-API/qaq-p/667936)
 
+<!-- textlint-disable japanese/sentence-length -->
 [Shogobg/markdown2confluence: Tool to convert Markdown to Confluence wiki](https://github.com/Shogobg/markdown2confluence) を使うと、markdownからconfluence Wikiへの変換が可能です。
+<!-- textlint-enable japanese/sentence-length -->
 ただ、テーブルの表示がやはり崩れてしまうため、renderer optionを指定しています。  
 以下のIssueを上げていますが対応してもらえるといいなぁ...。
 [Markdown table syntax little change · Issue #15 · Shogobg/markdown2confluence](https://github.com/Shogobg/markdown2confluence/issues/15)
@@ -89,7 +95,9 @@ curl -X POST -sL "$url/rest/api/content" \
 ## ADF: Atlassian Document Format
 
 Confluence CloudではADFというJSONを使用した形式で記事が保存されています。  
+<!-- textlint-disable japanese/sentence-length -->
 [On-Premise Confluence Server Support · Issue #91 · markdown-confluence/markdown-confluence](https://github.com/markdown-confluence/markdown-confluence/issues/91) によると、markdown-confluenceではADFのみに対応しているため、Confluence Serverでは利用できないようです。  
+<!-- textlint-enable japanese/sentence-length -->
 悲しい...。Issueでは有志が対応しようとしているので期待していますが、以下の2つの問題があって未解決のようです。  
 
 1. markdownからConfluence storage formatへの変換
