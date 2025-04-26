@@ -7,7 +7,7 @@ published: true
 ---
 
 現在の勤め先ではオンプレミスのConfluence Serverを使用しています。  
-https://github.com/markdown-confluence/markdown-confluence を使用してmarkdownでドキュメントを書いてConfluenceにアップロードできないか、と調べてみたのですが、できないことがわかりました。  
+<https://github.com/markdown-confluence/markdown-confluence> を使用してmarkdownでドキュメントを書いてConfluenceにアップロードできないか、と調べてみたのですが、できないことがわかりました。  
 せっかくなので、調べてみた内容をまとめます。
 
 ## Confluence Storage Format
@@ -44,14 +44,14 @@ cat tmp.json | jq -r .body.storage.value
 記事の編集画面でMacの場合はCmd + Shift + Dで「マークアップを挿入」が開きます。
 [!image](images/20250426_confluence_markup_insert.png)
 
-markdownまたはConfluence wiki形式で記事中に「マークアップを挿入」が可能です。
+markdownまたはConfluence Wiki形式で記事中に「マークアップを挿入」が可能です。
 [Confluence Wiki Markup | Confluence Data Center 9.4 | Atlassian Documentation](https://confluence.atlassian.com/doc/confluence-wiki-markup-251003035.html)
 
 が、REST APIでmarkdown形式でpage contentを作成する際、マークアップ方式は選択できません。  
-そのためか、markdown形式での作成ではテーブルなどが崩れてしまうため、Confluence wiki形式での作成がオススメです。
+そのためか、markdown形式での作成ではテーブルなどが崩れてしまうため、Confluence Wiki形式での作成がオススメです。
 [Solved: Insert Confluence / Wiki Markdown via API](https://community.atlassian.com/forums/Confluence-questions/Insert-Confluence-Wiki-Markdown-via-API/qaq-p/667936)
 
-[Shogobg/markdown2confluence: Tool to convert Markdown to Confluence wiki](https://github.com/Shogobg/markdown2confluence) を使うと、markdownからconfluence wikiへの変換が可能です。
+[Shogobg/markdown2confluence: Tool to convert Markdown to Confluence wiki](https://github.com/Shogobg/markdown2confluence) を使うと、markdownからconfluence Wikiへの変換が可能です。
 ただ、テーブルの表示がやはり崩れてしまうため、renderer optionを指定しています。  
 以下のIssueを上げていますが対応してもらえるといいなぁ...。
 [Markdown table syntax little change · Issue #15 · Shogobg/markdown2confluence](https://github.com/Shogobg/markdown2confluence/issues/15)
@@ -98,5 +98,5 @@ Confluence CloudではADFというJSONを使用した形式で記事が保存さ
 
 ## まとめ
 
-Confluenceからダウンロードしてmarkdownに変換、はできましたし、markdownからConfluence wiki形式に変換してアップロード、もできました。
+Confluenceからダウンロードしてmarkdownに変換、はできましたし、markdownからConfluence Wiki形式に変換してアップロード、もできました。
 が、GitHubでmarkdown形式のドキュメントを書いてConfluence Serverと同期したい、というのはなかなか難儀そうです。  
