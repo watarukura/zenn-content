@@ -45,7 +45,7 @@ cat tmp.json | jq -r .body.storage.value
 ## マークアップでの挿入
 
 記事の編集画面でMacの場合はCmd + Shift + Dで「マークアップを挿入」が開きます。
-[!img.png](images/20250426_confluence_markup_insert.png)
+[!img.png](https://github.com/watarukura/zenn-content/blob/main/articles/images/20250426_confluence_markup_insert.png?raw=true)
 
 markdownまたはConfluence Wiki形式で記事中に「マークアップを挿入」が可能です。
 [Confluence Wiki Markup | Confluence Data Center 9.4 | Atlassian Documentation](https://confluence.atlassian.com/doc/confluence-wiki-markup-251003035.html)
