@@ -116,9 +116,9 @@ rm -f tmp.*
 ## まとめ
 
 Clineのチャット履歴の場所と読み方が雑にでもわかったので、他にも色々試せそうです。
-<!-- markdownlint-disable MD013 -->
+<!-- markdownlint-disable MD013 --><!-- textlint-disable -->
 [gitleaks/gitleaks: Find secrets with Gitleaks 🔑](https://github.com/gitleaks/gitleaks) を使って、チャット履歴をスキャンしてシークレットがLLM呼び出しに含まれていないか早速チェックしてみたりしました。
-<!-- markdownlint-enable MD013 -->
+<!-- markdownlint-enable MD013 --><!-- textlint-enable -->
 幸い、大丈夫そうでした。
 
 <!-- markdownlint-disable MD013 -->
