@@ -59,7 +59,7 @@ Cloudflare D1の話を聞いたとき、「おお、あのときのアレに似�
 今思い出すと、マルチコネクション時のレスポンスとかどうだったんだろう、と疑問に思いますが、もう検証の必要もありませんし...。
 
 セキュアなWordPress構築、では使えるかもしれません。  
-<https://github.com/WordPress/sqlite-database-integration> はまだベータ版なのでproductionで使うなら自己責任で。  
+<https://github.com/WordPress/sqlite-database-integration> はまだベータ版なので、腕力に自信のある方向けです。  
 更新用の管理画面は隔離して、SQLiteファイルを参照用のWordPressに配布する、みたいな形です。  
 何なら更新はローカルで実施して、SQLiteファイルS3にアップロードくらいでもいいかもです。  
 もちろん、相応にアクセスがあるなら普通にMySQL使ったほうがいいですが。
