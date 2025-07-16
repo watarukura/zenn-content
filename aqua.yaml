@@ -13,5 +13,5 @@ packages:
 - name: rhysd/actionlint@v1.7.7
 - name: evilmartians/lefthook@v1.12.2
 - name: crate-ci/typos@v1.34.0
-- name: nodejs/node@v24.4.0
+- name: nodejs/node@v24.4.1
 - name: pnpm/pnpm@v10.13.1
