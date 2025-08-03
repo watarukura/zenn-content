@@ -24,7 +24,7 @@ iam moduleはapp moduleから呼び出すローカルmoduleです。
 |   `--stg
 |     |--app
 |     `--network
-|-- modules
+`-- modules
     |--app
     |--iam       # appが利用しているIAM
     `--network
