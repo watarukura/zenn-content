@@ -19,12 +19,12 @@ iam moduleはapp moduleから呼び出すローカルmoduleです。
 .
 |-- environments
 |   `--prd
-|     |--app     # applicationの設定(EC2など)
-|     `--network # networkの設定(VPC、subnetなど)
+|   |  |--app     # applicationの設定(EC2など)
+|   |  `--network # networkの設定(VPC、subnetなど)
 |   `--stg
-|     |--app
-|     `--network
-|-- modules
+|      |--app
+|      `--network
+`-- modules
     |--app
     |--iam       # appが利用しているIAM
     `--network
