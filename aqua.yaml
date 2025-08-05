@@ -12,6 +12,6 @@ registries:
 packages:
 - name: rhysd/actionlint@v1.7.7
 - name: evilmartians/lefthook@v1.12.2
-- name: crate-ci/typos@v1.34.0
+- name: crate-ci/typos@v1.35.1
 - name: nodejs/node@v24.5.0
 - name: pnpm/pnpm@v10.14.0
