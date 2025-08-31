@@ -26,7 +26,7 @@ graph LR
 まずは、RSSを取得するaggregatorをGitHub Actions上でBashスクリプトで構築しました。
 
 1. 1時間おきにXMLをダウンロードし、yqコマンドでJSON Lines(以下、jsonl)に変換します。
-    - https://mikefarah.gitbook.io/yq/usage/xml
+    - <https://mikefarah.gitbook.io/yq/usage/xml>
     - `yq -p xml -o json <news.xml | jq -c '.|{title: .title, description: .description, (...)}'>news.jsonl`
 2. DuckDBを使用してjsonlをParquetに変換します
 3. BigQueryにParquetをロードします
@@ -34,7 +34,7 @@ graph LR
     - DuckDBのBigQueryエクステンションを使って書き込みしようとしましたがうまくいかず、`bq load`しています
 4. GCSにParquetをバックアップ用にアップロードします
 5. GSheetからBigQueryのConnected Sheetsで参照します
-   - https://cloud.google.com/bigquery/docs/connected-sheets?hl=ja
+   - <https://cloud.google.com/bigquery/docs/connected-sheets?hl=ja>
 
 ```shell
 .
