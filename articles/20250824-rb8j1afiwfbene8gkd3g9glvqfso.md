@@ -23,7 +23,7 @@ graph LR
     aggregator -->|backup| GCS
 ```
 
-まずは、RSSを取得するaggregatorをGitHub Actions上でBashスクリプトで構築しました。
+まずは、RSSを取得するaggregatorをGitHub Actions上でBashスクリプトを使って構築しました。
 
 1. 1時間おきにXMLをダウンロードし、yqコマンドでJSON Lines(以下、jsonl)に変換します。
     - <https://mikefarah.gitbook.io/yq/usage/xml>
@@ -63,7 +63,7 @@ graph LR
 ```
 
 ニュースソースごとに取得方法が変わり、Bashスクリプトで条件分岐するのは辛いので、Pythonで書き直します。  
-同じ形式のjsonlに変換すれば後続は修正不要なので、ニュースソースごとにjsonlに変換するmoduleを作ります。
+同じ形式のjsonlに変換すれば後続は修正不要なので、ニュースソースごとのjsonlに変換するmoduleを作ります。
 
 BigQueryへのParquetのロード時に、aggregatorのコードに誤りがあって重複してロードされたレコードがありました。  
 Google Apps Script(以下、GAS)を使用して、BigQueryにSQLを投げて重複削除して取得するようにします。  
@@ -104,8 +104,8 @@ CMD ["./main.py"]
 
 - BigQueryをterraformでスキーマ管理する場合、スキーマを変更するとBigQueryテーブルを削除して作り直してしまう
   - alembicでのmigrationを行うように修正しました
-  - [DBマイグレーションツールAlembicとBigQueryを連携して、マイグレーションを管理する](https://note.com/aaron_b/n/n13814b1df66e) こちらにお世話になりました
-- GASのコンソールからコードを直接書いて更新していたため、claspを使ってGitHubリポジトリにbackupするようにしました
+  - [DBマイグレーションツールAlembicとBigQueryを連携して、マイグレーションを管理する](https://note.com/aaron_b/n/n13814b1df66e) こちらのブログを参考にさせていただきました
+- GASのコンソールからコードを直接更新していたため、claspを使ってGitHubリポジトリへbackupするようにしました
 - CloudRun Jobsのエラー時にSlack通知するようにCloudLoggingを設定しました
 - WIP: [bigquery-emulator](https://github.com/goccy/bigquery-emulator)を使用して結合テストをmockで実行できるようにしたい
   - bigquery-emulatorへは`bq load`・`upload_from_filename(filename)`ができない様子
