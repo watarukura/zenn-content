@@ -38,7 +38,7 @@
     "zenn-cli": "^0.2.0"
   },
   "engines": {
-    "node": "24.7.0",
+    "node": "24.8.0",
     "pnpm": "10.15.1"
   },
   "packageManager": "pnpm@10.15.1",
