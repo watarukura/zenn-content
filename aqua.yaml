@@ -14,4 +14,4 @@ packages:
 - name: evilmartians/lefthook@v2.0.0
 - name: crate-ci/typos@v1.38.1
 - name: nodejs/node@v24.10.0
-- name: pnpm/pnpm@v10.18.3
+- name: pnpm/pnpm@v10.19.0
