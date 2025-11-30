@@ -58,8 +58,8 @@ Pull Request自体もドキュメントとして活用するためです。
 
 ## ネットワーク
 
-引っ越し先のAWSアカウントにVPC・subnet等を作成します。   
-既存アカウントのVPC CIDRや、AZ、NATGatewayの数などは特段の理由がなければ踏襲します。   
+引っ越し先のAWSアカウントにVPC・subnet等を作成します。
+既存アカウントのVPC CIDRや、AZ、NATGatewayの数などは特段の理由がなければ踏襲します。
 もちろん、開発環境のコスト削減のためにAZの数を減らしたいなどがあればこの時点で対応します。  
 ネットワークについては、あえてterraform importすることもないかと思います。
 
@@ -233,7 +233,7 @@ LambdaのRuntimeによって`npm install`や`go build`が必要になると思�
 parameter store / secrets managerは手動で登録します。  
 コンソール・AWS CLIのいずれか好みの方法で登録するのが良いでしょう。  
 
-(この辺りも、[1password Environments](https://developer.1password.com/docs/environments/)と[Ephemeral values](https://developer.hashicorp.com/terraform/language/manage-sensitive-data/ephemeral)を組み合わせればterraform管理できるかも...???)
+(この辺りも、[1password Environments](https://developer.1password.com/docs/environments/)と[Ephemeral values](https://developer.hashicorp.com/terraform/language/manage-sensitive-data/ephemeral)を組み合わせればterraform管理できるかも...?)
 
 ## まとめ
 
