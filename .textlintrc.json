@@ -5,7 +5,13 @@
     }
   },
   "filters": {
-    "comments": true
+    "comments": true,
+    "allowlist": {
+      "allow": [
+        "<!-- -->",
+        "ElastiCache"
+      ]
+    }
   },
   "rules": {
     "web-plus-db": true,
