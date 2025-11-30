@@ -119,8 +119,8 @@ RDSのデータは、既存のDBからexportしてimportします。
 CloudFrontを構築してしまうとサービスがインターネットに公開されてしまうので、AWS WAFをアタッチして公開先を制限します。  
 ネットワーク設計を変更してよいのであれば、VPC Originを使用するのも良いでしょう。  
 Lambda@Edge・CloudFront Functionsについては、更新頻度が低ければlambrollではなくterraformで管理します。  
-(更新頻度が高い場合は、後述のLambdaと同様に管理するのが良いです)  
-Lambda@Edge・CloudFront Functionsのソースコードは別ファイルで管理できたほうがコードが書きやすいので、以下のようにします。
+なお、更新頻度が高い場合は、後述のLambdaと同様に管理しましょう。  
+Lambda@Edge・CloudFront Functionsのソースコードは別ファイルで管理した方が書きやすいので、以下のようにします。
 
 ```sh
 ❯ tree --charset=C
@@ -150,7 +150,9 @@ resource "aws_cloudfront_function" "function_name" {
 
 ALB・ECR・ECSクラスターはterraformでimportして構築します。  
 ECSサービス・ECSタスク定義等はecspressoを使って定義します。  
+<!-- textlint-disable -->
 `ecspresso init --service=<ecs service name> --cluster=<ecs cluster name>`  
+<!-- textlint-enable -->
 スケジュール実行するタスクがある場合は、ecspressoで一度ECSサービスをdeployをして、ECSタスク定義を作ってからdata sourceとして参照します。  
 GitHub Actionsでdocker/build-push-actionを使ってdocker buildし、ECRへpush、ecspresso deployします。
 
@@ -232,4 +234,6 @@ parameter store / secrets managerは手動で登録します。
 
 CDKを触ったことがなかったのでterraform化しましたが、CDKのコードを活かす選択肢も期限やチームや会社の技術スタックによっては全然アリです。  
 CDKのコードをCursorに読ませて作成されるAWSリソースの洗い出しをして、ヌケモレなくimportできているかチェックしたりもしました。
+<!-- textlint-disable -->
 既存のdeploy用GitHub Actionsのコードでは、buildしてcdk deployだけで「docker build -> ECRへpush -> ECSサービスをupdate」まで実施していて羨ましく思いました。
+<!-- textlint-enable --> 
