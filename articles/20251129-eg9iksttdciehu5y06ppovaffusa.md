@@ -52,7 +52,7 @@ GitHubリポジトリを作り、docsディレクトリを作ってその下に�
 
 ## OIDCの設定
 
-terraformを使い、plan / applyをGitHub Actionsで実施するため、OIDC用の設定を行います。
+terraformを使い、plan / applyをGitHub Actionsで実施するため、OIDC用の設定を行います。  
 OIDC用のIAM providerの作成はGitHub Actionsからは行えないので、ローカルからterraform applyを実行します。  
 以後は原則としてGitHub Actionsからapplyします。  
 Pull Request自体もドキュメントとして活用するためです。
@@ -62,7 +62,7 @@ Pull Request自体もドキュメントとして活用するためです。
 引っ越し先のAWSアカウントにVPC・subnet等を作成します。  
 既存アカウントのVPC CIDRや、AZ、NATGatewayの数などは特段の理由がなければ踏襲します。  
 もちろん、開発環境のコスト削減のためにAZの数を減らしたいなどがあればこの時点で対応します。  
-ネットワークについては、あえてterraform importすることもないかと思います。
+ネットワークについては、あえてterraform importすることもないかと思います。  
 
 ## RDS & ElastiCache
 
@@ -107,7 +107,12 @@ resource "aws_security_group" "new_db" {
 
 この時点で、既存アカウントへterraform planを実行して、差異が発生しないことを確認します。  
 
-RDS、ElastiCacheのデータは、既存のDBからexportしてimportします。  
+RDSのデータは、既存のDBからexportしてimportします。  
+開発環境であれば既存のDBからmysqldump等で出力したSQLファイルを使ってリストアすれば良いです。  
+本番環境の場合はサービスダウンタイムの許容やデータ量等で大きく難易度が異なってきます。  
+ダウンタイム最小化したいのであれば、現・新の同期のためにAWS Database Migration Service(DMS)等を使用する必要があります。  
+これはこれで大きな話なので、事例紹介にとどめておきます。  
+[DMM.com が Amazon Aurora MySQL に移行して、最大 70% のパフォーマンス向上と運用コストの大幅削減を実現 | Amazon Web Services ブログ](https://aws.amazon.com/jp/blogs/news/migration-to-amazon-aurora-mysql-dmm-review/)
 
 ## CloudFront & ALB
 
@@ -115,18 +120,17 @@ CloudFrontを構築してしまうとサービスがインターネットに公�
 ネットワーク設計を変更してよいのであれば、VPC Originを使用するのも良いでしょう。  
 Lambda@Edge・CloudFront Functionsについては、更新頻度が低ければlambrollではなくterraformで管理します。  
 (更新頻度が高い場合は、後述のLambdaと同様に管理するのが良いです)  
-Lambda@Edge・CloudFront Functionsのソースコードは別ファイルで管理できたほうが見やすいので、以下のようにします。
+Lambda@Edge・CloudFront Functionsのソースコードは別ファイルで管理できたほうがコードが書きやすいので、以下のようにします。
 
 ```sh
-❯ tree -d --charset=C
+❯ tree --charset=C
 .
-|-- environments
-|   `-- stg
-|       `-- cdn
 `-- modules
     `-- cdn
-        `-- files
-            `-- function_name
+        |-- files
+        |   `-- function_name
+        |       `-- index.js
+        `-- cloudfront_function.tf
 ```
 
 modules/cdn/cloudfront_function.tf で以下の様に指定します。  
@@ -147,7 +151,7 @@ resource "aws_cloudfront_function" "function_name" {
 ALB・ECR・ECSクラスターはterraformでimportして構築します。  
 ECSサービス・ECSタスク定義等はecspressoを使って定義します。  
 `ecspresso init --service=<ecs service name> --cluster=<ecs cluster name>`  
-スケジュール実行するタスクがある場合は、ecspressoで一度deployをして、ECSタスク定義を作ってからdata sourceとして参照します。  
+スケジュール実行するタスクがある場合は、ecspressoで一度ECSサービスをdeployをして、ECSタスク定義を作ってからdata sourceとして参照します。  
 GitHub Actionsでdocker/build-push-actionを使ってdocker buildし、ECRへpush、ecspresso deployします。
 
 ```yaml
