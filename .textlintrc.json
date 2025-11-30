@@ -8,7 +8,6 @@
     "comments": true,
     "allowlist": {
       "allow": [
-        "<!-- -->",
         "ElastiCache"
       ]
     }
