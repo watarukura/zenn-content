@@ -236,4 +236,4 @@ CDKを触ったことがなかったのでterraform化しましたが、CDKの�
 CDKのコードをCursorに読ませて作成されるAWSリソースの洗い出しをして、ヌケモレなくimportできているかチェックしたりもしました。
 <!-- textlint-disable -->
 既存のdeploy用GitHub Actionsのコードでは、buildしてcdk deployだけで「docker build -> ECRへpush -> ECSサービスをupdate」まで実施していて羨ましく思いました。
-<!-- textlint-enable --> 
+<!-- textlint-enable -->
