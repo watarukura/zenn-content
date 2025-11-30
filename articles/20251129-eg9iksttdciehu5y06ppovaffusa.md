@@ -59,26 +59,14 @@ Pull Request自体もドキュメントとして活用するためです。
 
 ## ネットワーク
 
-引っ越し先のAWSアカウントにVPC・subnet等を作成します。
-既存アカウントのVPC CIDRや、AZ、NATGatewayの数などは特段の理由がなければ踏襲します。
+引っ越し先のAWSアカウントにVPC・subnet等を作成します。  
+既存アカウントのVPC CIDRや、AZ、NATGatewayの数などは特段の理由がなければ踏襲します。  
 もちろん、開発環境のコスト削減のためにAZの数を減らしたいなどがあればこの時点で対応します。  
 ネットワークについては、あえてterraform importすることもないかと思います。
 
-```mermaid
-graph LR
-  subgraph VPC
-    VPCEndpoint
-    subgraph PrivateSubnet
-    end
-    subgraph PublicSubnet
-        NATGateway --- EIP
-    end
-end
-```
-
 ## RDS & ElastiCache
 
-RDS & ElastiCacheについては、既存の設定を踏襲したいので、terraform importします。
+RDS & ElastiCacheについては、既存の設定を踏襲したいので、terraform importします。  
 最初に、既存アカウントのAWSリソースからterraformコードを生成します。  
 override.tfを作成して、引っ越し先アカウント用のtfstateを読み込まないようにします。
 
@@ -107,8 +95,8 @@ import {
 ```diff
 resource "aws_rds_cluster" "aurora" {
   # ...
-  - vpc_security_group_ids = ["old-rds-security-group-id"]
-  + vpc_security_group_ids = [aws_security_group.new_db.id]
+-   vpc_security_group_ids = ["old-rds-security-group-id"]
++   vpc_security_group_ids = [aws_security_group.new_db.id]
   # ...
 }
 
@@ -124,9 +112,9 @@ RDS、ElastiCacheのデータは、既存のDBからexportしてimportします�
 ## CloudFront & ALB
 
 CloudFrontを構築してしまうとサービスがインターネットに公開されてしまうので、AWS WAFをアタッチして公開先を制限します。  
-ネットワーク設計を変更してよいのであれば、VPC Originを使用するのも良いでしょう。
+ネットワーク設計を変更してよいのであれば、VPC Originを使用するのも良いでしょう。  
 Lambda@Edge・CloudFront Functionsについては、更新頻度が低ければlambrollではなくterraformで管理します。  
-(更新頻度が高い場合は、後述のLambdaと同様に管理するのが良いです)
+(更新頻度が高い場合は、後述のLambdaと同様に管理するのが良いです)  
 Lambda@Edge・CloudFront Functionsのソースコードは別ファイルで管理できたほうが見やすいので、以下のようにします。
 
 ```sh
@@ -159,7 +147,7 @@ resource "aws_cloudfront_function" "function_name" {
 ALB・ECR・ECSクラスターはterraformでimportして構築します。  
 ECSサービス・ECSタスク定義等はecspressoを使って定義します。  
 `ecspresso init --service=<ecs service name> --cluster=<ecs cluster name>`  
-スケジュール実行するタスクがある場合は、ecspressoで一度deployをして、ECSタスク定義を作ってからdata sourceとして参照します。
+スケジュール実行するタスクがある場合は、ecspressoで一度deployをして、ECSタスク定義を作ってからdata sourceとして参照します。  
 GitHub Actionsでdocker/build-push-actionを使ってdocker buildし、ECRへpush、ecspresso deployします。
 
 ```yaml
