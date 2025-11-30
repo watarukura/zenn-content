@@ -24,6 +24,7 @@ graph LR
     subgraph PrivateSubnet
         RDS
         ElastiCache
+        Lambda
     end
     subgraph PublicSubnet
         ALB
