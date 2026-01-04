@@ -23,7 +23,7 @@ published: true
 
 指定日付でユーザが関与したPR / Issueを取得、JSON Lines形式で標準出力するツールを作ります。  
 [自分のエンジニアリング成果を「見える化」してドヤるための GitHub CLI 拡張 gh-brag を作った](https://zenn.dev/jackchuka/articles/19ebe3677cebdc) を参考にさせていただきました。  
-https://github.com/jackchuka/gh-brag/blob/main/internal/collect/search.go のSearchQueryをほぼそのまま利用させてもらいました。  
+<https://github.com/jackchuka/gh-brag/blob/main/internal/collect/search.go> のSearchQueryをほぼそのまま利用させてもらいました。  
 
 ```bash
 #!/usr/bin/env bash
@@ -188,7 +188,7 @@ done
 ## Cursorとのチャット履歴
 
 コーディングエージェントへの質問履歴も取ってきます。  
-自社でCursorを契約しているので、Mac版のCursor用です。
+自社でCursorを契約しているので、Mac版のCursor用です。  
 (JetBrains IDE or neovimでコードを書いているので、もっぱらcursor-agent経由でしか使ってないのですが)
 
 ```bash
@@ -310,7 +310,7 @@ SQL
 
 ## 日報出力
 
-エンジニアリングマネージャーに、指定日の業務内容についてのアドバイスを貰う、という体裁にしてみました。
+エンジニアリングマネージャーに、指定日の業務内容についてのアドバイスを貰う、という体裁にしてみました。  
 .envrcにSLACK_USER_TOKENとSLACKのUSER_NAMEを記載しておきます。
 
 ```bash
@@ -434,12 +434,12 @@ Slackでの活動も1件のみで、チーム内でのコミュニケーショ�
 
 さすがに冬休み期間中なのでアウトプットの少なさは容赦してほしいなぁ...。  
 
-ということでやる気の出るアドバイスをしてくれるようにGYARUモードを実装します。
+ということでやる気の出るアドバイスをしてくれるようにGYARUモードを実装します。  
 [マジ使える💖 Cursorをギャル化してみた件、超ウケる😝 #生成AI - Qiita](https://qiita.com/usuit/items/65188cb6d178b3d665b1)
 
 ```diff
---- no_gyaru.bash	2026-01-04 17:27:53.508593543 +0900
-+++ main.bash	2026-01-04 17:22:04.297010063 +0900
+--- no_gyaru.bash 2026-01-04 17:27:53.508593543 +0900
++++ main.bash 2026-01-04 17:22:04.297010063 +0900
 @@ -3,6 +3,7 @@
  
  today=$(date +%Y-%m-%d)
@@ -548,5 +548,5 @@ Slackでの活動も1件のみで、チーム内でのコミュニケーショ�
 
 ## まとめ
 
-適当にactivityを取ってきてLLMに丸ごとぶん投げて日報が生成できるのは便利ですね！
+適当にactivityを取ってきてLLMに丸ごとぶん投げて日報が生成できるのは便利ですね！  
 特定のプロジェクトに絞って進捗サマリーを作ったり、日報をまとめて週報・月報を作って振り返りのネタにしたり、色々なことができそうです。
