@@ -19,11 +19,11 @@ published: true
 - [GNU coreutils](https://www.gnu.org/software/coreutils/)
   - gdateコマンドを使用します
 
-## GitHubのActivity
+## GitHubのアクティビティ
 
 指定日付でユーザが関与したPR / Issueを取得、JSON Lines形式で標準出力するツールを作ります。  
 [自分のエンジニアリング成果を「見える化」してドヤるための GitHub CLI 拡張 gh-brag を作った](https://zenn.dev/jackchuka/articles/19ebe3677cebdc) を参考にさせていただきました。  
-https://github.com/jackchuka/gh-brag/blob/main/internal/collect/search.go のSearchQueryをほぼそのまま利用させてもらって、gh cliで日付指定で取ってきます。  
+https://github.com/jackchuka/gh-brag/blob/main/internal/collect/search.go のSearchQueryをほぼそのまま利用させてもらいました。  
 
 ```bash
 #!/usr/bin/env bash
@@ -311,7 +311,7 @@ SQL
 ## 日報出力
 
 エンジニアリングマネージャーに、指定日の業務内容についてのアドバイスを貰う、という体裁にしてみました。
-.envrcにSLACK_USER_TOKENとSLACKのUSER_NAMEを記載しておきます
+.envrcにSLACK_USER_TOKENとSLACKのUSER_NAMEを記載しておきます。
 
 ```bash
 export SLACK_USER_TOKEN=xoxp-...
@@ -544,7 +544,7 @@ Slackでの活動も1件のみで、チーム内でのコミュニケーショ�
 いい感じですね！  
 プロンプトを少し工夫すると、耳に痛い指摘も聞きやすくなります。  
 その日の精神状態に合わせて出し分けてみてもいいかもしれませんね。  
-必要に応じて、他のコーディングエージェントの履歴も取得したり、confluenceやJIRA、notionなどのwikiやチケット管理ツールのactivityを取得しても良いですね。
+必要に応じて、他のコーディングエージェントの履歴も取得したり、Wikiやチケット管理ツールのアクティビティを取得しても良いですね。
 
 ## まとめ
 
