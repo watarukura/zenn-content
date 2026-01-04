@@ -129,7 +129,7 @@ fi
 
 ## Slackのactivity
 
-Slackの自分の発言を全部取得して、GitHubと同様にJSON LINESで標準出力します。。  
+Slackの自分の発言を全部取得して、GitHubと同様にJSON Linesで標準出力します。。  
 環境変数としてSLACK_USER_TOKENとUSER_NAMEを宣言してから実行します。
 
 ```bash
