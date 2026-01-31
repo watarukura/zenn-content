@@ -103,13 +103,13 @@ CMD ["./main.py"]
 ## 運用改善
 
 - BigQueryをterraformでスキーマ管理する場合、スキーマを変更するとBigQueryテーブルを削除して作り直してしまう
-  - alembicでのmigrationを行うように修正しました
-  - [DBマイグレーションツールAlembicとBigQueryを連携して、マイグレーションを管理する](https://note.com/aaron_b/n/n13814b1df66e) こちらのブログを参考にさせていただきました
+    - alembicでのmigrationを行うように修正しました
+    - [DBマイグレーションツールAlembicとBigQueryを連携して、マイグレーションを管理する](https://note.com/aaron_b/n/n13814b1df66e) こちらのブログを参考にさせていただきました
 - GASのコンソールからコードを直接更新していたため、claspを使ってGitHubリポジトリへbackupするようにしました
 - CloudRun Jobsのエラー時にSlack通知するようにCloudLoggingを設定しました
 - WIP: [bigquery-emulator](https://github.com/goccy/bigquery-emulator)を使用して結合テストをmockで実行できるようにしたい
-  - bigquery-emulatorへは`bq load`・`upload_from_filename(filename)`ができない様子
-  - [fake-gcs-server](https://github.com/fsouza/fake-gcs-server)を使うことで、GCSからのアップロードで回避できないか検証中
+    - bigquery-emulatorへは`bq load`・`upload_from_filename(filename)`ができない様子
+    - [fake-gcs-server](https://github.com/fsouza/fake-gcs-server)を使うことで、GCSからのアップロードで回避できないか検証中
 
 現時点のディレクトリ構成は以下のとおりです。
 
