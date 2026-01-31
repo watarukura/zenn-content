@@ -6,7 +6,7 @@ topics: ["Zensical"]
 published: true
 ---
 
-zenn.devとcosense(旧scrapbox)を使用しているのですが、いざというときとのためにbackupが欲しいなと唐突に思いました。  
+zenn.devとcosense(旧scrapbox)を使用しているのですが、いざというときのためにbackupが欲しいなと唐突に思いました。  
 markdownファイルをいい感じにGitHub Pagesで公開できるようにしたい、と思って調べていたところ、[Zensical](https://zensical.org/docs/get-started/)というツールを見つけたので、使ってみることにします。
 
 ## Zensical
@@ -27,7 +27,7 @@ uv add zensical
 uv zensical new .
 ```
 
-あとは、zensical.tomlのproject情報を書き、project.themeのcustom_dirを"article"に変更しました。  
+あとは、zensical.tomlのproject情報を書き、project.doc_dirを"articles"に変更しました。  
 articles/index.md に適当な見出しページを作って、`uv run zensical serve` すると、localhost:8000 でプレビューできます。
 
 ![img.png](./images/20260131_zensical_serve.png)
@@ -89,6 +89,7 @@ while [[ $# -gt 0 ]]; do
   esac
 done
 
+# 日付指定がある場合
 since_epoch=""
 if [[ -n "$since_date" ]]; then
   if date -j -f "%Y-%m-%d" "$since_date" "+%s" >/dev/null 2>&1; then
@@ -105,6 +106,7 @@ if [[ -n "$since_epoch" ]]; then
   jq_args=(--argjson since_epoch "$since_epoch")
 fi
 
+# cosenseから記事一覧をダウンロードする
 page=1
 if [[ "$skip_download" -eq 0 ]]; then
   curl -sL "https://scrapbox.io/api/pages/$PROJECT?sort=updated" >"articles$page"
@@ -122,6 +124,7 @@ if [[ "$skip_download" -eq 0 ]]; then
   done
 fi
 
+# cosenseから記事をダウンロードする
 if [[ "$skip_download" -eq 0 ]]; then
   mkdir -p scrapbox
   cat articles* |
@@ -132,6 +135,7 @@ if [[ "$skip_download" -eq 0 ]]; then
     done
 fi
 
+# scrapbox形式からmarkdown形式に変換する
 mkdir -p markdown
 cat articles* |
   jq -r "${jq_args[@]}" "$title_filter" |
