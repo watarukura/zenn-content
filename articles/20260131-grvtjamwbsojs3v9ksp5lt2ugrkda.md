@@ -30,7 +30,7 @@ uv zensical new .
 あとは、zensical.tomlのproject情報を書き、project.doc_dirを"articles"に変更しました。  
 articles/index.md に適当な見出しページを作って、`uv run zensical serve` すると、localhost:8000 でプレビューできます。
 
-![img.png](./images/20260131_zensical_serve.png)
+![img.png](https://github.com/watarukura/zenn-content/blob/main/articles/images/20260131_zensical_serve.png?raw=true)
 
 GitHub Pagesで公開する方法もZensicalのドキュメントにサンプルがあります。  
 <https://zensical.org/docs/publish-your-site/>
