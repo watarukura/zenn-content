@@ -27,8 +27,8 @@ importers:
         specifier: ^1.1.5
         version: 1.1.5(textlint@15.5.1(hono@4.11.5))
       zenn-cli:
-        specifier: ^0.4.0
-        version: 0.4.1
+        specifier: ^0.4.4
+        version: 0.4.4
     devDependencies:
       textlint:
         specifier: 15.5.1
@@ -1759,8 +1759,8 @@ packages:
     resolution: {integrity: sha512-LKYU1iAXJXUgAXn9URjiu+MWhyUXHsvfp7mcuYm9dSUKK0/CjtrUwFAxD82/mCWbtLsGjFIad0wIsod4zrTAEQ==}
     engines: {node: '>=0.4'}
 
-  zenn-cli@0.4.1:
-    resolution: {integrity: sha512-zK6/VxIcue72msrIvJXGbWOqLvQ2gbzpIFli7gmdLj4PxU2ZL9l8Ye6PUPsvjMI/ZHAFgiWdxOVEEcjphBdbZg==}
+  zenn-cli@0.4.4:
+    resolution: {integrity: sha512-Z5fKwueKzSgjIOp/xCC5O1unkN4XPknHT5V8v6xRqhjk9n5Io6Ul0m701slgx43+X1D+5Ch5yAhpPr/f+M2Tug==}
     engines: {node: '>=22.0.0'}
     hasBin: true
 
@@ -3902,7 +3902,7 @@ snapshots:
 
   xtend@4.0.2: {}
 
-  zenn-cli@0.4.1:
+  zenn-cli@0.4.4:
     dependencies:
       open: 10.2.0
       package-manager-detector: 1.6.0
