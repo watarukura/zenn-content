@@ -17,7 +17,7 @@ published: true
 - [sqlite3](https://sqlite.org/)
 - [cursor-agent](https://cursor.com/ja/cli)
 - [GNU coreutils](https://www.gnu.org/software/coreutils/)
-  - gdateコマンドを使用します
+    - gdateコマンドを使用します
 
 ## GitHubのアクティビティ
 

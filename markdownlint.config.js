@@ -1,4 +1,7 @@
 module.exports = {
+  MD007: {
+    "indent": 4,
+  },
   MD013: {
     line_length: 400,
   },

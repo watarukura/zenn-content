@@ -16,9 +16,9 @@ markdownファイルをいい感じにGitHub Pagesで公開できるようにし
 ## 出来上がったもの
 
 - [zenn-content](https://watarukura.github.io/zenn-content/)
-  - [GitHub repo](https://github.com/watarukura/zenn-content/)
+    - [GitHub repo](https://github.com/watarukura/zenn-content/)
 - [cosense-content](https://watarukura.github.io/cosense-content/)
-  - [GitHub repo](https://github.com/watarukura/cosense-content/)
+    - [GitHub repo](https://github.com/watarukura/cosense-content/)
 
 ## zenn-content
 
