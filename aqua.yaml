@@ -8,10 +8,10 @@
 #   - all
 registries:
 - type: standard
-  ref: v4.464.0 # renovate: depName=aquaproj/aqua-registry
+  ref: v4.465.0 # renovate: depName=aquaproj/aqua-registry
 packages:
 - name: rhysd/actionlint@v1.7.10
 - name: evilmartians/lefthook@v2.0.16
-- name: crate-ci/typos@v1.42.3
+- name: crate-ci/typos@v1.43.0
 - name: nodejs/node@v24.13.0
 - name: pnpm/pnpm@v10.28.2
