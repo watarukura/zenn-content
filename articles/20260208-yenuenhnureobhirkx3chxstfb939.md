@@ -8,27 +8,27 @@ published: true
 
 todoリストをCLIで管理したくなったので、todoコマンドを自作することにしました。  
 できあがったものは↓こちらです。
-https://github.com/watarukura/todo
+<https://github.com/watarukura/todo>
 
 ## アイデアをまとめる
 
 - `todo list`
-  - todoの一覧を表示する
-  - fzfで選択してtodoファイルを開く
+    - todoの一覧を表示する
+    - fzfで選択してtodoファイルを開く
 - `todo cd`
-  - todo管理ディレクトリに移動する
+    - todo管理ディレクトリに移動する
 - `todo $title`
-  - todoを追加する
-  - `todo $title $project`
-    - 複数プロジェクトを並行して進めることがあるため、目印としてprojectを設定できるようにする
+    - todoを追加する
+    - `todo $title $project`
+        - 複数プロジェクトを並行して進めることがあるため、目印としてprojectを設定できるようにする
 - `todo done`
-  - fzfで選択してfinished_atに当日の日付を入れ、doneディレクトリ配下に移動する
+    - fzfで選択してfinished_atに当日の日付を入れ、doneディレクトリ配下に移動する
 - todoは1件1ファイルとする
 - メタデータはfront matterで登録する
-  - title: タイトル
-  - created_at: todo開始日
-  - finished_at: todo終了日
-  - project: プロジェクト
+    - title: タイトル
+    - created_at: todo開始日
+    - finished_at: todo終了日
+    - project: プロジェクト
 - todoファイル以外のデータストアは使用しない
 
 ## シェルスクリプトでプロトタイプを作る
@@ -135,9 +135,8 @@ function todo() {
 この case "cd" は cd サブコマンドの処理です。Goで実行するCLIは別プロセスなので、そこで cd しても親シェルの作業ディレクトリは変わりません。元のbashスクリプトは「関数」だったため cd $todo_dir がそのまま効きましたが、Goでは同じことはできないため、代わりに todoDir を表示して return しています。
 ```
 
-https://github.com/twpayne/chezmoi/blob/43ba0344d8465d916a006022a697e215204a90a9/internal/cmd/cdcmd.go
+<https://github.com/twpayne/chezmoi/blob/43ba0344d8465d916a006022a697e215204a90a9/internal/cmd/cdcmd.go>
 `chezmoi cd`にインスパイアされた機能なので、chezmoiのコードをJunieに読ませて解説してもらいました。
-
 
 ```markdown
 chezmoi cd の仕組みは「親シェルの cwd を変える」のではなく、「指定ディレクトリを cwd にしたサブシェルを起動する」です。コード上の流れはこうです。
