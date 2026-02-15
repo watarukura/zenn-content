@@ -11,10 +11,21 @@ homebrewでは、PHPは8.1以降しかないので、NG。
 miseとnixを試してみます。  
 どちらも駄目なら、諦めてdocker or ソースコードからbuildですね。
 
+## 前提
+
+- Apple M4 Pro
+- macOS Tahoe 26.1
+
+## 先に結論
+
+- mise単体ではPHP7.2はinstallできません
+- nixならfossar/nix-phpsを使いましょう
+- dockerが楽
+
 ## mise
 
-2026年2月現在、PHP 8.0以降であれば特段問題なくinstallできます。  
-事前に関連ライブラリをbrewでinstallの上、mise.toml に↓のように書けばOK。
+2026年2月現在、PHP 8.1以降であれば特段問題なくinstallできます。  
+事前に関連ライブラリをbrewでinstallの上、`mise install`すればOK。
 [参考: asdf](https://github.com/asdf-community/asdf-php/blob/248e9c6e2a7824510788f05e8cee848a62200b65/.github/workflows/workflow.yml#L52)
 
 ```shell
@@ -52,7 +63,7 @@ mise ERROR Run with --verbose or MISE_VERBOSE=1 for more information
 
 miseはasdf-phpを使用するので、以下を参考にPKG_CONFIGURE_OPTIONSを宣言しながら実行するラッパーを書きます。
 <https://github.com/jdx/mise/discussions/4720#discussioncomment-14808686>
-↓以下は最終型ですが、だいぶ紆余曲折ありました...。
+↓以下は最終型ですが、だいぶ紆余曲折ありました...。(後述)
 
 <!-- markdownlint-disable MD013 -->
 ```shell
@@ -437,7 +448,7 @@ RedisとXDebugもついでに入っています。
 
 ## docker
 
-これが一番カンタンかもですね。
+結局、これが一番カンタンかもですね。
 
 ```shell
 ❯ docker run -it php:7.2 /bin/bash -c 'php -v'
@@ -462,4 +473,4 @@ Zend Engine v3.2.0, Copyright (c) 1998-2018 Zend Technologies
 
 ## まとめ
 
-サポート期限切れのバージョンを使うのはとても大変なのでバージョンアップは計画的に行いましょう。
+サポート期限切れのバージョンを使うのはとても大変なので、バージョンアップは計画的に行いましょう。
