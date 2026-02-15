@@ -18,7 +18,7 @@ miseとnixを試してみます。
 
 ## 先に結論
 
-- mise単体ではPHP7.2はinstallできません
+- mise単体ではPHP 7.2はinstallできません
 - nixならfossar/nix-phpsを使いましょう
 - dockerが楽
 
