@@ -36,7 +36,7 @@ curl -sL --get \
   "https://docs.google.com/feeds/download/documents/export/Export"
 ```
 
-![img.png](images/20260222_google_docs.png)
+![img.png](https://github.com/watarukura/zenn-content/blob/main/articles/images/20260222_google_docs.png)
 URLパスの`/d/`の後段から$FILE_IDを取得してください。  
 ↓こんな風に出力されます。
 
@@ -180,7 +180,7 @@ curl -sL --get \
   "https://docs.google.com/spreadsheets/d/$GOOGLE_SPREADSHEET_FILE_ID/export"
 ```
 
-![img.png](images/20260222_google_spreadsheet.png)
+![img.png](https://github.com/watarukura/zenn-content/blob/main/articles/images/20260222_google_spreadsheet.png)
 シートのIDをURLのクエリ文字列の`gid=`部分から取得してください。
 
 ```bash
