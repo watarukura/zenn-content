@@ -36,7 +36,7 @@ curl -sL --get \
   "https://docs.google.com/feeds/download/documents/export/Export"
 ```
 
-![img.png](https://github.com/watarukura/zenn-content/blob/main/articles/images/20260222_google_docs.pnghttps://github.com/watarukura/zenn-content/blob/main/articles/images/20241222_evidence.png?raw=true)
+![img.png](https://github.com/watarukura/zenn-content/blob/main/articles/images/20260222_google_docs.png?raw=true)
 URLパスの`/d/`の後段から$FILE_IDを取得してください。  
 ↓こんな風に出力されます。
 
