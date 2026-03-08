@@ -68,7 +68,7 @@ resource "aws_s3_bucket" "example" {
 差異がある場合はexit status 1で終了するので、CIなどでご利用ください。
 
 ```bash
-❯ tfsimplify -check --dir .
+❯ tfsimplify -check -dir .
 --- s3.tf
 +++ s3.tf
 @@ -1,8 +1,6 @@
@@ -106,7 +106,7 @@ updated: s3.tf
 また、いずれのオプションも指定しない場合は、更新対象ファイル名のみ出力して正常終了します。
 
 ```bash
-❯ tfsimplify --dir .
+❯ tfsimplify -dir .
 would change: s3.tf
 ```
 
