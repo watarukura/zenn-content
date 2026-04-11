@@ -13,4 +13,3 @@ packages:
 - name: rhysd/actionlint@v1.7.10
 - name: evilmartians/lefthook@v2.1.1
 - name: crate-ci/typos@v1.43.4
-- name: pnpm/pnpm@v10.29.3
