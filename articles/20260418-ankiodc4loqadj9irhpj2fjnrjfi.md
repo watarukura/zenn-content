@@ -141,14 +141,17 @@ cosense(scrapboxは旧称)のcloneを作りたい、だとcosenseの特徴とな
 ## 現時点の動作
 
 閲覧画面: i, aキーを押すと編集画面に遷移します。
-![img.png](https://github.com/watarukura/zenn-content/blob/main/articles/images/20260418_wiki_view.png)
+
+![img.png](https://github.com/watarukura/zenn-content/blob/main/articles/images/20260418_wiki_view.png?raw=true)
 
 編集画面: CodeMirror-vim を使用しており、`:`を打つとコマンドも実行できます。  
 `:w`で保存、`:q`で保存せず閲覧画面に遷移します。
-![img.png](https://github.com/watarukura/zenn-content/blob/main/articles/images/20260418_wiki_edit.png)
+
+![img.png](https://github.com/watarukura/zenn-content/blob/main/articles/images/20260418_wiki_edit.png?raw=true)
 
 検索機能: `grep -nri`した結果を表示しているだけです。
-![img.png](https://github.com/watarukura/zenn-content/blob/main/articles/images/20260418_wiki_search.png)
+
+![img.png](https://github.com/watarukura/zenn-content/blob/main/articles/images/20260418_wiki_search.png?raw=true)
 
 ## まとめ
 
