@@ -19,7 +19,7 @@ Obsidianも使ってみましたが、IDE・ブラウザ・Slack・Ghosttyがデ
 - ファイルベース
 - ブラウザから編集可能
     - 編集画面はvimキーバインドのみ利用可
-        - yank時にclipboardにコピー
+        - yank時はclipboardにコピー
 - 編集履歴はGitで管理
 - ダークモード対応
 - レスポンシブデザイン対応
@@ -33,8 +33,9 @@ Obsidianも使ってみましたが、IDE・ブラウザ・Slack・Ghosttyがデ
 ## やらないことリスト
 
 - 認証機能を作らない
-- vimキーバインドの無効化
-- 全文検索・ベクトル検索のためのDB導入
+- vimキーバインドの有効・無効のトグルを作らない
+- 全文検索・ベクトル検索のためにDBを導入しない
+- 記事ページの階層化をしない
 
 ## 初期構築時の失敗
 
@@ -78,7 +79,9 @@ Milkdown も「WYSIWYG Markdown editor」を明確に掲げていて有力です
 <!-- markdownlint-enable MD033 -->
 
 というところから実際にTauriで動くアプリを作ってもらったのですが、大分過剰な実装でした。  
-Junieのクレジット1ヶ月分があっという間に使いつくされ、自分では読めないコードの山とバグがたっぷりで実用に耐えないアプリになったので没にしてやり直します。
+Junieのクレジット1ヶ月分があっという間に使いつくされました。  
+動作はするものの、markdownファイルと全文検索のためのSQLiteの同期時にSQLiteが破損するなどのエラーが頻発。
+自分では把握しきれないコードの山に加え、バグがたっぷりで実用に耐えないため、没にしてやり直します。
 
 ## 2回目のトライ
 
@@ -128,10 +131,11 @@ Obsidian界隈でも同等機能を求める文脈で説明されています。
 <!-- markdownlint-enable MD033 -->
 
 cosense(scrapboxは旧称)のcloneを作りたい、だとcosenseの特徴となる機能をアレコレ作ろうとしてしまい、失敗しました。  
-欲しいものをもっと小さく、必要最小限になるように表現します。  
-動くことを確認しながら、ビジネスロジックが1ファイルに収まるサイズに抑えつつ、step by stepで開発を進めていきます。  
+欲しいものをもっと小さく表現します。  
+動くことを確認しながら、ビジネスロジックが1ファイルで収まるサイズに抑えつつ、step by stepで開発を進めていきます。  
 
-開発当初はNode.js + honoでサーバを構築しましたが、1バイナリで動かしたくなったので[k1LoW/mo: mo is a Markdown viewer that opens .md files in a browser.](https://github.com/k1LoW/mo)を参考にfrontendのコードをGoのバイナリに埋め込んでみました。  
+開発当初はNode.js + honoでサーバを構築しましたが、1バイナリで動かしたくなったので、frontendのコードをGoのバイナリに埋め込んでみました。  
+[k1LoW/mo: mo is a Markdown viewer that opens .md files in a browser.](https://github.com/k1LoW/mo)を参考にさせていただきました。  
 いちいち所定のディレクトリへ移動してコマンド実行、というのが面倒だったので、記事の書き出し先ディレクトリを環境変数で扱えるようにして、`lwm`コマンドを実行したらWikiサーバが起動するようにします。  
 コマンドは短いほうがいいので、`local-md-wiki`という野暮ったい名前で開発してきたのですが`lwm`にリポジトリ名を変更しました。
 
@@ -140,7 +144,8 @@ cosense(scrapboxは旧称)のcloneを作りたい、だとcosenseの特徴とな
 閲覧画面: i, aキーを押すと編集画面に遷移します。
 ![img.png](https://github.com/watarukura/zenn-content/blob/main/articles/images/20260418_wiki_view.png)
 
-編集画面: CodeMirror-vim を使用しており、`:`を打つとコマンドも実行できます。`:w`で保存、`:q`で保存せずに閲覧画面に遷移します。
+編集画面: CodeMirror-vim を使用しており、`:`を打つとコマンドも実行できます。  
+`:w`で保存、`:q`で保存せず閲覧画面に遷移します。
 ![img.png](https://github.com/watarukura/zenn-content/blob/main/articles/images/20260418_wiki_edit.png)
 
 検索機能: `grep -nri`した結果を表示しているだけです。
@@ -150,7 +155,9 @@ cosense(scrapboxは旧称)のcloneを作りたい、だとcosenseの特徴とな
 
 自分の欲望だけを考え、自分で使うツールを作るのはとても楽しいですね！  
 Vibe Codingらしい欲望駆動開発です。  
+<!-- textlint-disable -->
 あれも欲しいこれも欲しいと機能を追加するのに遠慮は要らないのですが、アプリケーションのサイズは小さく抑えたい。  
+<!-- textlint-enable -->
 (いざというときに気合で読める程度の量と複雑性でないと使い続けられないので...)  
 自分のマシンでさえ動けばいいので、`git`や`grep`のようなコマンドが未installであることを心配しなくて良い。  
 もうしばらく、欲望の赴くままに破綻なく成長させられるか、継続していじっていこうと思います。
