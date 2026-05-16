@@ -125,7 +125,7 @@ WHERE line_item_usage_start_date >= CURRENT_DATE () - INTERVAL 1 MONTH
 GROUP BY 1, 2;
 ```
 
-![img.png](https://github.com/watarukura/zenn-content/blob/main/articles/images/20260516_bedrock_cost.png)
+![img.png](https://github.com/watarukura/zenn-content/blob/main/articles/images/20260516_bedrock_cost.png?raw=true)
 
 ## まとめ
 
