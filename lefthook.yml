@@ -39,8 +39,8 @@ pre-commit:
     markdown:
       glob: "*.md"
       run: |
-        pnpm run fix && \
-        pnpm run fix:md
+        pnpm fix && \
+        pnpm fix:md
     typos:
       run: typos .
     actionlint:
