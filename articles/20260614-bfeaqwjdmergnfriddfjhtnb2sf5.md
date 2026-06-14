@@ -47,6 +47,7 @@ packages:
 
 問題点としては、Renovateでのバージョンアップのために一工夫必要であることす。  
 上記のようにRenovate用のコメントを追加し、renovate.jsonでcustomManagersを設定する必要があります。  
+(が、まだ上手く設定できていません...)
 terraform-config-inspectであれば機能追加がほぼないため、ある程度バージョンアップしなくても問題ありません。  
 <!-- textlint-disable -->
 (<https://github.com/hashicorp/terraform-config-inspect#contributing> には、`Furthermore, we consider this package feature-complete;` との記載があります)
