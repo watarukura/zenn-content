@@ -14,7 +14,7 @@ aquaproj/aqua/aqua(以下、aqua)でもcommit SHAまたはchecksumを用いてPi
 
 ## commit SHAでのPinning
 
-hashicorp/terraform-config-inspect はGitHub Releasesを使用していないため、commit SHAをversionとして指定しています。
+hashicorp/terraform-config-inspect はGitHub Releasesを使用していないため、commit SHAをversionとして指定しています。  
 
 ```yaml
 ---
@@ -23,13 +23,34 @@ registries:
     ref: v4.520.2 # renovate: depName=aquaproj/aqua-registry
 packages:
   - name: hashicorp/terraform-config-inspect
-    # renovate: datasource=github-refs depName=hashicorp/terraform-config-inspect versioning=git ref=master
+    # renovate: packageName=https://github.com/hashicorp/terraform-config-inspect currentValue=master
     version: "e06743db9cd8a4a96040fafd00503b6a9d357ff1"
 ```
 
-問題点としては、Renovateでのバージョンアップのために一工夫必要です。  
-上記のようにRenovate用のコメントを追加する必要があります。  
-terraform-config-inspectであれば機能追加がないため、ある程度バージョンアップしなくても問題ありません。  
+```json
+{
+  "customManagers": [
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "(^|/)aqua\\.ya?ml$"
+      ],
+      "matchStrings": [
+        "name: hashicorp/terraform-config-inspect\\n\\s+# renovate: packageName=(?<packageName>\\S+) currentValue=(?<currentValue>\\S+)\\n\\s+version: \"(?<currentDigest>[a-f0-9]{40})\""
+      ],
+      "datasourceTemplate": "git-refs",
+      "depNameTemplate": "hashicorp/terraform-config-inspect"
+    }
+  ]
+}
+```
+
+問題点としては、Renovateでのバージョンアップのために一工夫必要であることす。  
+上記のようにRenovate用のコメントを追加し、renovate.jsonでcustomManagersを設定する必要があります。  
+terraform-config-inspectであれば機能追加がほぼないため、ある程度バージョンアップしなくても問題ありません。  
+<!-- textlint-disable -->
+(<https://github.com/hashicorp/terraform-config-inspect#contributing> には、`Furthermore, we consider this package feature-complete;` との記載があります)
+<!-- textlint-enable -->
 しかし、全てのツールで同様に実施するのは煩雑ですので、checksumを利用してみます。
 
 ## aqua checksum
