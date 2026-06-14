@@ -6,10 +6,11 @@ topics: ["aqua"]
 published: true
 ---
 
-GitHub ActionsならSHA Pinning、DockerfileならSHA256digestでのPinningが可能です。  
-同一バージョン番号で中身が変わっているタイプの侵害への対策として、有効にしている方も多いのではないでしょうか？  
+GitHub ActionsならSHA Pinning、DockerfileならSHA256 digestでのPinningが可能です。  
+タグの付け替えやリリースアセットの差し替えなど、同一バージョン番号のまま中身が変わるタイプの侵害への対策として、有効にしている方も多いのではないでしょうか。
+
 aquaproj/aqua/aqua(以下、aqua)でもcommit SHAまたはchecksumを用いてPinningが可能です。
-以下、検証の記録です。
+この記事では、aquaのchecksum検証を有効化し、Renovateによる更新時にchecksumも自動更新するところまで試してみます。
 
 ## commit SHAでのPinning
 
@@ -26,8 +27,8 @@ packages:
     version: "e06743db9cd8a4a96040fafd00503b6a9d357ff1"
 ```
 
-問題点としては、renovateでのバージョンアップのために一工夫必要です。  
-上記のようにrenovate用のコメントを追加する必要があります。  
+問題点としては、Renovateでのバージョンアップのために一工夫必要です。  
+上記のようにRenovate用のコメントを追加する必要があります。  
 terraform-config-inspectであれば機能追加がないため、ある程度バージョンアップしなくても問題ありません。  
 しかし、全てのツールで同様に実施するのは煩雑ですので、checksumを利用してみます。
 
@@ -82,7 +83,7 @@ require_checksumをtrueにすることで、checksumが設定されていない�
 } 
 ```
 
-このままだと、renovateからaqua.yamlが更新されるとCIが落ちてしまうので、checksumの更新も自動化します。  
+このままだと、Renovateからaqua.yamlが更新されるとCIが落ちてしまうので、checksumの更新も自動化します。  
 <https://aquaproj.github.io/docs/guides/checksum>
 公式ドキュメントではupdate-checksum-actionが利用されていますが、あえて手書きしてみます。  
 (ドキュメントでも`Please consider autofix.ci or Securefix Action`との記載があることもあります)  
